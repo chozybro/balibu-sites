@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Balibu Bar &amp; Resto — Ubud</title>
+<meta name="description" content="Balibu Bar &amp; Resto, Ubud: smashed burgers, Kintamani coffee and house cocktails on Jl. Sugriwa. Opening 1 December 2026. Daily 08:00–23:00.">
+<meta name="theme-color" content="#FFAE2E">
+<link rel="icon" type="image/png" href="../shared/logo/wordmark-red.png">
+<link rel="preload" href="../shared/fonts/BricolageGrotesque-wdth.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../shared/brand.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#menu" data-i18n="skip">Skip to the menu</a>
+
+<header class="nav" id="nav" data-theme="yellow">
+  <a class="nav__logo" href="#top" aria-label="Balibu — back to top">
+    <img class="wm wm--dark" src="../shared/logo/wordmark-dark.png" alt="Balibu" width="1010" height="222">
+    <img class="wm wm--cream" src="../shared/logo/wordmark-cream.png" alt="" aria-hidden="true" width="1010" height="222">
+  </a>
+  <nav class="nav__links" id="navlinks" aria-label="Main">
+    <a href="#menu" data-i18n="nav_menu">Menu</a>
+    <a href="#promo" data-i18n="nav_promo">Promo</a>
+    <a href="#happy" data-i18n="nav_happy">Happy hour</a>
+    <a href="#mood" data-i18n="nav_mood">Story</a>
+    <a href="#find" data-i18n="nav_find">Find us</a>
+  </nav>
+  <div class="nav__tools">
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" class="lang__b is-on" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" class="lang__b" data-lang="id" aria-pressed="false">ID</button>
+    </div>
+    <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="navlinks" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- 1 HERO (yellow) -->
+<section class="blk" id="hero" data-theme="yellow" data-wall="hero">
+  <div class="blk__bg"><div class="wall" aria-hidden="true"></div></div>
+  <div class="wrap hero">
+    <div class="hero__text">
+      <img class="hero__lockup pop" src="../shared/logo/lockup-dark.png" alt="Balibu — good food, good mood" width="1010" height="406">
+      <h1 class="hero__h">
+        <span class="hero__w" data-i18n="h1a">Burgers</span>
+        <span class="hero__w" data-i18n="h1b">Coffee</span>
+        <span class="hero__w hero__w--o" data-i18n="h1c">Ubud</span>
+      </h1>
+      <p class="hero__lead" data-i18n="lead">Food, friends &amp; a good evening. Smashed burgers, Kintamani coffee and house cocktails on Jl. Sugriwa.</p>
+      <div class="hero__cta">
+        <a class="btn btn--dark" href="#menu" data-i18n="cta_menu">See the menu</a>
+        <a class="btn btn--cream" href="https://wa.me/628214248077" target="_blank" rel="noopener" data-i18n="cta_wa">Book on WhatsApp</a>
+      </div>
+    </div>
+    <div class="hero__art">
+      <figure class="frame pop jump">
+        <img src="../shared/img/hero-smash.jpg" alt="Balibu Smash: double smashed beef with melted cheddar" width="1067" height="1600" fetchpriority="high">
+      </figure>
+      <img class="cut hero__latte pop jump" src="../shared/img/cutw/iced-latte.webp" alt="Iced latte" width="245" height="735">
+      <a class="ring ring--hero pop" href="#menu" data-ring="hero" aria-label="See the menu"></a>
+      <div class="burst burst--hero pop" aria-hidden="false"><div class="burst__in"><b data-i18n="hero_burst_a">Opens</b><strong>1 DEC</strong></div></div>
+    </div>
+  </div>
+  <div class="hero__strip wrap"><span data-i18n="addr_line">Jl. Sugriwa No. 60, Padangtegal Kelod, Ubud · Daily 08:00 – 23:00</span></div>
+</section>
+
+<!-- ticker -->
+<div class="ticker" aria-hidden="true"><div class="ticker__row" data-i18n="ticker"></div></div>
+
+<!-- 2 MENU (red) -->
+<section class="blk" id="menu" data-theme="red" data-wall="menu">
+  <div class="blk__bg"><div class="wall" aria-hidden="true"></div></div>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker" data-i18n="menu_kicker">The menu · 8 sections · 37 things we love</p>
+      <h2 class="big" data-i18n="menu_h">Pick a section</h2>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Menu sections" id="tabs"></div>
+    <div class="menu" id="menuPanel" role="tabpanel" aria-live="polite">
+      <ul class="menu__list" id="menuList"></ul>
+      <div class="menu__feat" id="menuFeat"></div>
+    </div>
+    <p class="foot-note" data-i18n="footnote">Prices in thousands of rupiah (K). Subject to 15% tax &amp; service.</p>
+  </div>
+</section>
+
+<!-- 3 PROMO (cream) -->
+<section class="blk" id="promo" data-theme="cream" data-wall="promo">
+  <div class="blk__bg"><div class="wall" aria-hidden="true"></div></div>
+  <div class="wrap">
+    <div class="combo">
+      <div class="combo__type">
+        <p class="kicker kicker--red" data-i18n="combo_kicker">Signature · every day</p>
+        <h2 class="stack">
+          <span>Smash</span><span class="o">Smash</span><span>Combo</span>
+        </h2>
+        <p class="combo__line" data-i18n="combo_line">Balibu Smash + hand-cut fries + iced lemon tea.</p>
+        <a class="btn btn--red" href="https://wa.me/628214248077" target="_blank" rel="noopener" data-i18n="combo_cta">Order the combo</a>
+      </div>
+      <div class="combo__art">
+        <img class="cut combo__burger pop jump" loading="lazy" src="../shared/img/cutw/veggie-burger.webp" alt="Burger with hand-cut fries" width="713" height="308">
+        <img class="cut combo__tea pop jump" loading="lazy" src="../shared/img/cutw/iced-tea.webp" alt="Iced lemon tea" width="815" height="378">
+        <div class="ring ring--combo pop" data-ring="combo" role="img" aria-label="Smash Combo 125K"></div>
+      </div>
+    </div>
+
+    <div class="opening" id="opening">
+      <div class="opening__sticker pop">
+        <div class="burst burst--big"><div class="burst__in"><b data-i18n="open_free">Free</b><strong>KOPI</strong><b data-i18n="open_first">first 100</b></div></div>
+      </div>
+      <div class="opening__text">
+        <p class="kicker kicker--red" data-i18n="open_kicker">Opening day</p>
+        <h3 class="mid" data-i18n="open_h">We open 1 December</h3>
+        <p data-i18n="open_line">First 100 guests get a free Es Kopi Susu Aren.</p>
+        <div class="count" id="count" aria-live="off">
+          <div><strong data-c="d">0</strong><span data-i18n="c_d">days</span></div>
+          <div><strong data-c="h">0</strong><span data-i18n="c_h">hrs</span></div>
+          <div><strong data-c="m">0</strong><span data-i18n="c_m">min</span></div>
+          <div><strong data-c="s">0</strong><span data-i18n="c_s">sec</span></div>
+        </div>
+      </div>
+      <img class="cut opening__kopi pop jump" loading="lazy" src="../shared/img/cutw/kopi-susu.webp" alt="Es Kopi Susu Aren, top view" width="747" height="1000">
+      <div class="brunch pop">
+        <div class="ring ring--brunch" data-ring="brunch" role="img" aria-label="Weekend brunch 95K"></div>
+        <p><strong data-i18n="brunch_h">Weekend Brunch</strong><span data-i18n="brunch_line">Pancakes and flat white, 95K until noon. Sat &amp; Sun.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 HAPPY HOUR (dark) -->
+<section class="blk" id="happy" data-theme="dark" data-wall="happy">
+  <div class="blk__bg"><div class="wall" aria-hidden="true"></div></div>
+  <div class="wrap happy">
+    <div class="happy__text">
+      <p class="kicker kicker--yellow" data-i18n="hh_kicker">Happy hour · every day</p>
+      <h2 class="happy__big"><span>2</span><small data-i18n="hh_for">for</small><span>1</span></h2>
+      <p class="happy__time">17:00 – 19:00</p>
+      <p class="happy__line" data-i18n="hh_line">Two for one on house cocktails, every day 17:00 – 19:00.</p>
+      <p class="live" id="live"><i></i><span></span></p>
+      <button type="button" class="btn btn--yellow" id="toCocktails" data-i18n="hh_cta">See the cocktails</button>
+    </div>
+    <div class="happy__art">
+      <img class="cut happy__marg pop jump" loading="lazy" src="../shared/img/cutw/margarita.webp" alt="Passion margarita" width="482" height="823">
+      <img class="cut happy__mart pop jump" loading="lazy" src="../shared/img/cutw/espresso-martini.webp" alt="Espresso martini" width="543" height="966">
+      <div class="ring ring--happy pop" data-ring="happy" role="img" aria-label="Two for one, 17 to 19"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 MOOD / STORY + GALLERY (yellow) -->
+<section class="blk" id="mood" data-theme="yellow" data-wall="mood">
+  <div class="blk__bg"><div class="wall" aria-hidden="true"></div></div>
+  <div class="wrap">
+    <div class="story">
+      <div>
+        <p class="kicker" data-i18n="story_kicker">Our story</p>
+        <h2 class="big big--dark" data-i18n="story_h">Good food, good mood.</h2>
+      </div>
+      <div class="story__p">
+        <p data-i18n="story_p1">Balibu is a burger bar and coffee spot in the middle of Ubud. Beef smashed to order, brioche from our own oven, Kintamani arabica roasted in Bali — and house cocktails when the sun goes down.</p>
+        <p data-i18n="story_p2">Come for breakfast, stay for the evening. Bring friends, or make some here.</p>
+        <ul class="facts">
+          <li><strong data-to="15">0</strong><span data-i18n="f_hours">hours open, every day</span></li>
+          <li><strong data-to="37">0</strong><span data-i18n="f_items">dishes &amp; drinks</span></li>
+          <li><strong data-to="100">0</strong><span data-i18n="f_kopi">free kopi on 1 Dec</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="gallery" id="gallery">
+      <button type="button" class="ph ph--1 pop" data-full="../shared/img/hero-friends.jpg"><img loading="lazy" src="../shared/img/hero-friends.jpg" alt="Friends laughing over burgers" width="1400" height="935"></button>
+      <button type="button" class="ph ph--2 pop" data-full="../shared/img/night-burger.jpg"><img loading="lazy" src="../shared/img/night-burger.jpg" alt="Burger under warm evening lights" width="1067" height="1600"></button>
+      <button type="button" class="ph ph--3 pop" data-full="../shared/img/hero-bartender.jpg"><img loading="lazy" src="../shared/img/hero-bartender.jpg" alt="Cocktails on the bar" width="1067" height="1600"></button>
+      <button type="button" class="ph ph--4 pop" data-full="../shared/img/friends-burgers.jpg"><img loading="lazy" src="../shared/img/friends-burgers.jpg" alt="Two friends sharing burgers" width="1067" height="1600"></button>
+      <button type="button" class="ph ph--5 pop" data-full="../shared/img/hero-ubud.jpg"><img loading="lazy" src="../shared/img/hero-ubud.jpg" alt="Rice terraces near Ubud" width="1400" height="1050"></button>
+      <button type="button" class="ph ph--6 pop" data-full="../shared/img/hero-people.jpg"><img loading="lazy" src="../shared/img/hero-people.jpg" alt="Friends at a table" width="1400" height="933"></button>
+    </div>
+  </div>
+</section>
+
+<!-- 6 FIND US + BOOKING (cream) -->
+<section class="blk" id="find" data-theme="cream" data-wall="find">
+  <div class="blk__bg"><div class="wall" aria-hidden="true"></div></div>
+  <div class="wrap find">
+    <div class="find__info">
+      <p class="kicker kicker--red" data-i18n="find_kicker">Hours &amp; location</p>
+      <h2 class="big big--dark" data-i18n="find_h">Find us</h2>
+      <address>Jl. Sugriwa No. 60,<br>Padangtegal Kelod, Ubud, Bali</address>
+      <p class="find__hours"><strong data-i18n="hours">Daily 08:00 – 23:00</strong></p>
+      <div class="find__btns">
+        <a class="btn btn--red" href="https://wa.me/628214248077" target="_blank" rel="noopener">WhatsApp +62 821-4248-077</a>
+        <a class="btn btn--dark" href="https://instagram.com/balibu.bar" target="_blank" rel="noopener">Instagram @balibu.bar</a>
+      </div>
+      <div class="map jump">
+        <div class="map__ph"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4C20 4 11 13 11 25c0 15 21 35 21 35s21-20 21-35C53 13 44 4 32 4z" fill="#D50F04" stroke="#232323" stroke-width="3"/><circle cx="32" cy="25" r="8" fill="#FFF0D2" stroke="#232323" stroke-width="3"/></svg><span>Jl. Sugriwa No. 60, Ubud</span><a href="https://www.google.com/maps?q=Jl.+Sugriwa+No.+60,+Padangtegal+Kelod,+Ubud" target="_blank" rel="noopener" data-i18n="map_open">Open in Google Maps</a></div>
+        <iframe title="Map: Balibu, Jl. Sugriwa No. 60, Ubud" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Jl.+Sugriwa+No.+60,+Padangtegal+Kelod,+Ubud&amp;output=embed"></iframe>
+      </div>
+    </div>
+    <form class="book pop" id="book" novalidate>
+      <div class="ring ring--book" data-ring="book" aria-hidden="true"></div>
+      <h3 class="mid" data-i18n="book_h">Save a table</h3>
+      <p data-i18n="book_p">Tell us when you are coming. We will confirm on WhatsApp.</p>
+      <label><span data-i18n="f_name">Name</span><input name="name" required autocomplete="name" maxlength="60"></label>
+      <div class="book__row">
+        <label><span data-i18n="f_date">Date</span><input name="date" type="date" required min="2026-12-01"></label>
+        <label><span data-i18n="f_guests">Guests</span><select name="guests"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8+</option></select></label>
+      </div>
+      <label><span data-i18n="f_phone">WhatsApp number</span><input name="phone" type="tel" inputmode="tel" required autocomplete="tel" maxlength="20" pattern="[0-9 +()-]{7,20}"></label>
+      <p class="book__err" id="bookErr" role="alert" hidden></p>
+      <button class="btn btn--dark" type="submit" data-i18n="book_btn">Hold my table</button>
+      <div class="book__ok" id="bookOk" role="status" hidden></div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="foot" data-theme="dark">
+  <div class="wrap foot__in">
+    <img class="foot__logo" loading="lazy" src="../shared/logo/lockup-cream.png" alt="Balibu — good food, good mood" width="1010" height="406">
+    <div class="foot__cols">
+      <p><strong>Balibu Bar &amp; Resto</strong><br>Jl. Sugriwa No. 60, Padangtegal Kelod, Ubud<br><span data-i18n="hours">Daily 08:00 – 23:00</span></p>
+      <p><a href="https://wa.me/628214248077" target="_blank" rel="noopener">WhatsApp +62 821-4248-077</a><br><a href="https://instagram.com/balibu.bar" target="_blank" rel="noopener">Instagram @balibu.bar</a></p>
+    </div>
+    <p class="foot__note" data-i18n="footnote">Prices in thousands of rupiah (K). Subject to 15% tax &amp; service.</p>
+    <p class="foot__copy">© 2026 Balibu · Burgers · Coffee · Ubud</p>
+  </div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Photo">
+  <button type="button" class="lb__x" id="lbX" aria-label="Close">×</button>
+  <img id="lbImg" alt="">
+</div>
+
+<script src="../shared/menu.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

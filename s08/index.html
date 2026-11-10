@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Balibu Bar &amp; Resto — Ubud</title>
+<meta name="description" content="Balibu Bar &amp; Resto, Jl. Sugriwa No. 60, Ubud: burgers, Kintamani coffee and cocktails, daily 08:00–23:00. Opening 1 December 2026.">
+<meta name="theme-color" content="#D50F04">
+<link rel="icon" type="image/png" href="../shared/logo/wordmark-red.png">
+<link rel="preload" href="../shared/fonts/BricolageGrotesque-wdth.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../shared/brand.css">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#menu">skip to menu</a>
+
+<header class="top">
+  <div class="wrap top__in">
+    <a class="top__logo" href="#hero" aria-label="Balibu — back to top"><img src="../shared/logo/wordmark-cream.png" alt="Balibu" width="1010" height="222"></a>
+    <nav class="top__nav" aria-label="Main">
+      <a href="#menu" data-i18n="nav.menu">menu</a><span aria-hidden="true">·</span>
+      <a href="#combo" data-i18n="nav.promo">promo</a><span aria-hidden="true">·</span>
+      <a href="#find" data-i18n="nav.find">find us</a><span aria-hidden="true">·</span>
+      <span class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">en</button>/<button type="button" data-lang="id" aria-pressed="false">id</button></span>
+    </nav>
+  </div>
+</header>
+
+<nav class="dock" aria-label="Quick">
+  <a href="#menu" data-i18n="nav.menu">menu</a>
+  <a href="#combo" data-i18n="nav.promo">promo</a>
+  <a href="#find" data-i18n="nav.find">find us</a>
+  <span class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">en</button><button type="button" data-lang="id" aria-pressed="false">id</button></span>
+</nav>
+
+<main>
+<!-- HERO -->
+<section class="hero red" id="hero" aria-labelledby="h-hero">
+  <div class="marquee hero__word" aria-hidden="true"><div class="marquee__t"><span>balibu</span><span>balibu</span><span>balibu</span><span>balibu</span></div></div>
+  <div class="wrap hero__in">
+    <img class="hero__cut" src="../shared/img/cutw/classic-burger.webp" alt="Balibu classic burger with cheddar, lettuce and tomato" width="1000" height="650" fetchpriority="high">
+    <div class="hero__txt">
+      <h1 class="hero__h light" id="h-hero" data-i18n="hero.h">burgers, coffee<br>&amp; good evenings.</h1>
+      <div class="hero__cta">
+        <a class="tlink" href="#menu"><span data-i18n="hero.cta">see the menu</span> →</a>
+        <a class="tlink tlink--quiet" href="#find" data-i18n="hero.cta2">find us</a>
+      </div>
+    </div>
+    <p class="hero__addr">Jl. Sugriwa No. 60, Padangtegal Kelod, Ubud · <span data-i18n="hours">daily 08:00 – 23:00</span></p>
+  </div>
+</section>
+
+<!-- COFFEE / STORY + OPENING -->
+<section class="cream coffee" id="story" aria-labelledby="h-coffee">
+  <div class="bigword bigword--tan drift" data-drift="-0.25" aria-hidden="true">coffee</div>
+  <div class="wrap coffee__in">
+    <img class="coffee__cut rv" src="../shared/img/cutw/iced-latte.webp" alt="Es Kopi Susu Aren in a tall glass" width="245" height="735" loading="lazy">
+    <div class="coffee__txt">
+      <p class="lbl rv" data-i18n="coffee.lbl">ubud · since 2026</p>
+      <h2 class="h2 light rv" id="h-coffee" data-i18n="coffee.h">good morning,<br>ubud</h2>
+      <p class="p rv" data-i18n="coffee.p">Kintamani arabica, roasted in Bali. Beef smashed to order, brioche from our own oven, cocktails when the sun goes down. A small place on Jl. Sugriwa for food, friends and a good evening.</p>
+      <hr class="hair rv">
+      <div class="open rv">
+        <p class="open__n"><span class="count" data-to="100">100</span></p>
+        <div>
+          <p class="open__h" data-i18n="open.h">we open 1 december</p>
+          <p class="open__p" data-i18n="open.p">the first 100 guests get a free es kopi susu aren.</p>
+          <p class="open__d" id="countdown"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU: pinned horizontal on desktop -->
+<section class="red hs" id="menu" aria-labelledby="h-menu">
+  <div class="hs__pin">
+    <div class="hs__head wrap">
+      <p class="lbl" data-i18n="menu.lbl">the menu · 8 sections</p>
+      <ol class="hs__idx" id="idx"></ol>
+    </div>
+    <div class="hs__view">
+      <div class="hs__track" id="track">
+        <div class="panel panel--intro">
+          <h2 class="h2 light" id="h-menu" data-i18n="menu.h">smashed to order,<br>brioche from our oven</h2>
+          <p class="p" data-i18n="menu.p">Every dish, every price. Hover or tap a line to read it in Indonesian.</p>
+          <p class="hs__hint" aria-hidden="true"><span data-i18n="menu.hint">keep scrolling</span> <i>→</i></p>
+          <p class="note" data-i18n="footnote">Prices in thousands of rupiah (K). Subject to 15% tax &amp; service.</p>
+        </div>
+      </div>
+    </div>
+    <div class="hs__bar" aria-hidden="true"><i id="bar"></i></div>
+  </div>
+</section>
+
+<!-- BRUNCH -->
+<section class="cream brunch" id="brunch" aria-labelledby="h-brunch">
+  <div class="bigword bigword--tan drift" data-drift="0.22" aria-hidden="true">brunch</div>
+  <div class="wrap brunch__in">
+    <div class="brunch__pic rv" aria-hidden="true">
+      <div class="disc"><img src="../shared/img/pancakes.jpg" alt="" width="1400" height="978" loading="lazy"></div>
+      <img class="brunch__cup" src="../shared/img/cutw/flat-white.webp" alt="" width="672" height="635" loading="lazy">
+    </div>
+    <div class="brunch__txt">
+      <p class="lbl rv" data-i18n="brunch.lbl">saturday &amp; sunday · until noon</p>
+      <h2 class="h2 light rv" id="h-brunch" data-i18n="brunch.h">weekend brunch,<br>95k</h2>
+      <p class="p rv" data-i18n="brunch.p">Fluffy pancakes with banana, palm sugar caramel and toasted coconut, and a double-shot flat white. Slow mornings are the point.</p>
+      <hr class="hair rv">
+      <ul class="pairs rv">
+        <li><span>Fluffy Pancakes</span><span>65K</span></li>
+        <li><span>Flat White</span><span>42K</span></li>
+        <li><span data-i18n="brunch.together">together, until 12:00</span><span>95K</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- HAPPY HOUR -->
+<section class="red happy" id="happy" aria-labelledby="h-happy">
+  <div class="bigword bigword--deep floaty" aria-hidden="true">cheers</div>
+  <div class="wrap happy__in">
+    <img class="happy__cut rv" src="../shared/img/cutw/margarita.webp" alt="Passion Margarita" width="482" height="823" loading="lazy">
+    <div class="happy__txt">
+      <p class="lbl rv" data-i18n="happy.lbl">every day · 17:00 – 19:00</p>
+      <h2 class="h2 light rv" id="h-happy" data-i18n="happy.h">happy hour,<br>two for one</h2>
+      <p class="p rv" data-i18n="happy.p">Two for one on house cocktails: Balibu Spritz, Arak Mojito, Passion Margarita.</p>
+      <div class="clock rv" id="clock" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMBO -->
+<section class="cream combo" id="combo" aria-labelledby="h-combo">
+  <div class="bigword bigword--tan drift" data-drift="-0.2" aria-hidden="true">combo</div>
+  <div class="wrap combo__in">
+    <div class="combo__txt">
+      <p class="lbl rv" data-i18n="combo.lbl">the deal · all day</p>
+      <h2 class="h2 light rv" id="h-combo">smash combo<br>125k</h2>
+      <p class="p rv" data-i18n="combo.p">Balibu Smash, hand-cut fries and an iced lemon tea. 165K on the menu, 125K together.</p>
+      <a class="tlink tlink--dark rv" href="https://wa.me/628214248077?text=Hi%20Balibu!%20One%20Smash%20Combo%20please." target="_blank" rel="noopener"><span data-i18n="combo.cta">order on whatsapp</span> →</a>
+    </div>
+    <ol class="trio" aria-label="Smash Combo contents">
+      <li class="rv"><span class="disc disc--s"><img src="../shared/img/t/smash-burger.jpg" alt="" width="480" height="480" loading="lazy"></span><b>Balibu Smash</b><small>95K</small></li>
+      <li class="plus" aria-hidden="true">+</li>
+      <li class="rv"><span class="disc disc--s"><img src="../shared/img/t/fries.jpg" alt="" width="480" height="480" loading="lazy"></span><b data-i18n="combo.fries">hand-cut fries</b><small>38K</small></li>
+      <li class="plus" aria-hidden="true">+</li>
+      <li class="rv"><span class="disc disc--s"><img src="../shared/img/t/iced-tea.jpg" alt="" width="480" height="480" loading="lazy"></span><b data-i18n="combo.tea">iced lemon tea</b><small>32K</small></li>
+    </ol>
+  </div>
+</section>
+
+<!-- FIND US -->
+<section class="cream find" id="find" aria-labelledby="h-find">
+  <div class="wrap">
+    <hr class="hair rv">
+    <div class="find__in">
+      <div class="find__txt">
+        <p class="lbl rv" data-i18n="find.lbl">find us</p>
+        <h2 class="h2 light rv" id="h-find">jl. sugriwa no. 60</h2>
+        <p class="p rv">Padangtegal Kelod, Ubud, Bali</p>
+        <dl class="hours rv">
+          <div><dt data-i18n="find.d1">every day</dt><dd>08:00 – 23:00</dd></div>
+          <div><dt>happy hour</dt><dd>17:00 – 19:00</dd></div>
+          <div><dt data-i18n="find.d3">weekend brunch</dt><dd data-i18n="find.d3v">sat – sun, until 12:00</dd></div>
+          <div><dt data-i18n="find.d4">opening</dt><dd data-i18n="find.d4v">1 december 2026</dd></div>
+        </dl>
+        <div class="find__links rv">
+          <a class="pill" href="https://wa.me/628214248077" target="_blank" rel="noopener">whatsapp +62 821-4248-077</a>
+          <a class="pill pill--line" href="https://www.instagram.com/balibu.bar/" target="_blank" rel="noopener">instagram @balibu.bar</a>
+        </div>
+      </div>
+      <div class="find__map rv">
+        <iframe title="Map: Balibu, Jl. Sugriwa No. 60, Ubud" src="https://www.google.com/maps?q=Jl.+Sugriwa+No.+60,+Padangtegal+Kelod,+Ubud&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="red news" id="news" aria-labelledby="h-news">
+  <div class="wrap news__in">
+    <div>
+      <p class="lbl rv" data-i18n="news.lbl">the opening list</p>
+      <h2 class="h2 light rv" id="h-news" data-i18n="news.h">be first through<br>the door</h2>
+    </div>
+    <form class="news__form rv" id="newsForm" novalidate>
+      <label class="sr" for="email" data-i18n="news.label">email address</label>
+      <div class="news__row">
+        <input id="email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="120" placeholder="you@example.com" required>
+        <button type="submit" data-i18n="news.send">join →</button>
+      </div>
+      <p class="news__msg" id="newsMsg" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="red foot">
+  <div class="wrap">
+    <hr class="hair">
+    <div class="foot__in">
+      <img class="foot__logo" src="../shared/logo/lockup-cream.png" alt="Balibu — Good food, good mood" width="1010" height="406" loading="lazy">
+      <p class="foot__addr">Balibu Bar &amp; Resto<br>Jl. Sugriwa No. 60, Padangtegal Kelod, Ubud<br>+62 821-4248-077 · @balibu.bar</p>
+    </div>
+    <p class="foot__note"><span data-i18n="footnote">Prices in thousands of rupiah (K). Subject to 15% tax &amp; service.</span><span>© 2026 balibu</span></p>
+  </div>
+</footer>
+
+<script src="../shared/menu.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

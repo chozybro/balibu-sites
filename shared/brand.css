@@ -1,0 +1,13 @@
+/* Balibu brand tokens — approved palette and type (09.11.2026); approved wordmark (10.11.2026) in ./logo */
+@font-face{font-family:'Bricolage';src:url(fonts/BricolageGrotesque-wdth.woff2) format('woff2');font-weight:200 800;font-stretch:75% 100%;font-display:swap}
+@font-face{font-family:'Outfit';src:url(fonts/Outfit.woff2) format('woff2');font-weight:100 900;font-display:swap}
+@font-face{font-family:'Caveat';src:url(fonts/Caveat.woff2) format('woff2');font-weight:400 700;font-display:swap}
+:root{
+  --yellow:#FFAE2E; --red:#D50F04; --dark:#232323; --cream:#FFF0D2; --bright:#FFDD8C;
+  --red-deep:#9E0B03; /* tone-on-tone only */ --tan:#F3D9A6; /* tone-on-tone only */
+  --font-display:'Bricolage',system-ui,sans-serif; --font-text:'Outfit',system-ui,sans-serif; --font-hand:'Caveat',cursive;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--font-text);color:var(--dark);background:var(--cream);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}

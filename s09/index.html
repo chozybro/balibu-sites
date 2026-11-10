@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Balibu Bar &amp; Resto — Ubud</title>
+<meta name="description" content="Balibu Bar &amp; Resto, Ubud: smashed burgers, Kintamani coffee and house cocktails on Jl. Sugriwa. Opening 1 December 2026. Daily 08:00–23:00.">
+<meta name="theme-color" content="#FFF0D2">
+<link rel="icon" type="image/png" href="../shared/logo/wordmark-red.png">
+<link rel="preload" href="../shared/fonts/BricolageGrotesque-wdth.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../shared/brand.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#menu" data-i18n="skip">Skip to the menu</a>
+
+<header class="nav" id="nav">
+  <a class="nav__logo" href="#top"><img src="../shared/logo/wordmark-dark.png" alt="Balibu" width="1010" height="222"></a>
+  <nav class="nav__links" id="navlinks" aria-label="Main">
+    <a href="#menu" data-i18n="nav_menu">Menu</a>
+    <a href="#promo" data-i18n="nav_promo">Promo</a>
+    <a href="#story" data-i18n="nav_story">Story</a>
+    <a href="#visit" data-i18n="nav_find">Find us</a>
+  </nav>
+  <div class="nav__tools">
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" class="lang__b is-on" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" class="lang__b" data-lang="id" aria-pressed="false">ID</button>
+    </div>
+    <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="navlinks" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- BAND 1: hero -->
+<section class="band" id="hero" aria-label="Balibu">
+  <div class="mosaic" id="heroGrid">
+    <div class="tile tile--title c-dark t22">
+      <img class="title__logo" src="../shared/logo/wordmark-cream.png" alt="Balibu" width="1010" height="222">
+      <div class="title__body">
+        <h1 class="title__h"><span data-i18n="h1a">Burgers</span><span data-i18n="h1b">Coffee</span><span data-i18n="h1c">Ubud</span></h1>
+        <p class="title__p" data-i18n="promise">Smashed to order · Kintamani coffee · house cocktails · opening 1 December</p>
+        <div class="title__cta">
+          <a class="pill pill--red" href="#menu" data-i18n="cta_menu">See the menu</a>
+          <a class="pill pill--ghost" href="https://wa.me/628214248077" target="_blank" rel="noopener" data-i18n="cta_wa">WhatsApp us</a>
+        </div>
+      </div>
+    </div>
+    <!-- four dish tiles are injected here (data-hero) -->
+  </div>
+</section>
+
+<!-- BAND 2: promos -->
+<section class="band" id="promo" aria-labelledby="promoH">
+  <h2 class="sr" id="promoH" data-i18n="nav_promo">Promo</h2>
+  <div class="mosaic">
+    <article class="tile tile--promo c-yellow t21 combo">
+      <div class="promo__txt">
+        <p class="k" data-i18n="combo_k">Signature · every day</p>
+        <h3 class="promo__h">Smash<br>Combo</h3>
+        <p class="promo__price">125K</p>
+        <p class="promo__p" data-i18n="combo_line">Balibu Smash + hand-cut fries + iced lemon tea.</p>
+      </div>
+      <img class="promo__img combo__b" loading="lazy" src="../shared/img/cutw/veggie-burger.webp" alt="Burger with hand-cut fries" width="713" height="308">
+      <img class="promo__img combo__t" loading="lazy" src="../shared/img/cutw/iced-tea.webp" alt="Iced lemon tea" width="815" height="378">
+    </article>
+    <article class="tile tile--promo c-red t21 opening">
+      <div class="promo__txt">
+        <p class="k" data-i18n="open_k">Opening day</p>
+        <h3 class="promo__h" data-i18n="open_h">We open<br>1 Dec</h3>
+        <p class="promo__p" data-i18n="open_line">First 100 guests get a free Es Kopi Susu Aren.</p>
+        <div class="count" id="count">
+          <div><b data-c="d">0</b><span data-i18n="c_d">days</span></div>
+          <div><b data-c="h">00</b><span data-i18n="c_h">hrs</span></div>
+          <div><b data-c="m">00</b><span data-i18n="c_m">min</span></div>
+          <div><b data-c="s">00</b><span data-i18n="c_s">sec</span></div>
+        </div>
+      </div>
+      <img class="promo__img open__k" loading="lazy" src="../shared/img/cutw/kopi-susu.webp" alt="Es Kopi Susu Aren, top view" width="747" height="1000">
+    </article>
+    <article class="tile tile--promo c-dark t21 happy" id="happy">
+      <div class="promo__txt">
+        <p class="k" data-i18n="hh_k">Happy hour · every day</p>
+        <h3 class="promo__h"><span class="y">2</span> <span data-i18n="hh_for">for</span> <span class="y">1</span></h3>
+        <p class="promo__time">17:00 – 19:00</p>
+        <p class="promo__p" data-i18n="hh_line">Two for one on house cocktails, every day 17:00 – 19:00.</p>
+        <p class="live" id="live"><i></i><span></span></p>
+      </div>
+      <img class="promo__img happy__m" loading="lazy" src="../shared/img/cutw/espresso-martini.webp" alt="Espresso martini" width="543" height="966">
+    </article>
+    <article class="tile c-bright t11 brunch">
+      <img class="round" loading="lazy" src="../shared/img/t/pancakes.jpg" alt="Fluffy pancakes" width="480" height="480">
+      <div class="brunch__txt">
+        <h3 class="sm-h" data-i18n="brunch_h">Weekend Brunch</h3>
+        <p data-i18n="brunch_line">Pancakes + flat white, 95K until noon, Sat &amp; Sun.</p>
+      </div>
+      <span class="brunch__p">95K</span>
+    </article>
+    <a class="tile c-cream t11 jump" href="#menu" data-jump="cocktails">
+      <span class="k" data-i18n="jump_k">Tonight</span>
+      <span class="sm-h" data-i18n="jump_h">See the cocktails</span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- BAND 3: menu -->
+<section class="band" id="menu" aria-labelledby="menuH">
+  <div class="chips" id="chips" role="toolbar" aria-label="Menu sections">
+    <span class="chips__ind" aria-hidden="true"></span>
+  </div>
+  <div class="mosaic mosaic--menu" id="menuGrid">
+    <div class="tile tile--sec c-dark t21" id="secTile" aria-live="polite">
+      <p class="k" data-i18n="menu_k">The menu</p>
+      <h2 class="sec__h" id="menuH">Burgers</h2>
+      <p class="sec__p" id="secNote"></p>
+      <p class="sec__n" id="secCount"></p>
+    </div>
+  </div>
+  <p class="note" data-i18n="footnote">Prices in thousands of rupiah (K). Subject to 15% tax &amp; service.</p>
+</section>
+
+<!-- BAND 4: story + gallery -->
+<section class="band" id="story" aria-labelledby="storyH">
+  <div class="mosaic">
+    <div class="tile c-red t22 story">
+      <p class="k" data-i18n="story_k">Our story</p>
+      <h2 class="story__h" id="storyH" data-i18n="story_h">Good food, good mood.</h2>
+      <p class="story__p" data-i18n="story_p">A burger bar and coffee spot in the middle of Ubud. Beef smashed to order, brioche from our own oven, Kintamani arabica roasted in Bali — and house cocktails when the sun goes down.</p>
+    </div>
+    <button type="button" class="tile t11 photo" data-full="../shared/img/hero-friends.jpg"><img loading="lazy" src="../shared/img/hero-friends.jpg" alt="Friends laughing over burgers" width="1400" height="935"></button>
+    <div class="tile c-yellow t11 fact"><b data-to="15">0</b><span data-i18n="f_hours">hours open, every day</span></div>
+    <button type="button" class="tile t21 photo" data-full="../shared/img/hero-bartender.jpg"><img loading="lazy" src="../shared/img/hero-bartender.jpg" alt="Cocktails on the bar" width="1067" height="1600"></button>
+    <div class="tile c-bright t11 fact"><b data-to="37">0</b><span data-i18n="f_items">dishes &amp; drinks</span></div>
+    <button type="button" class="tile t11 photo" data-full="../shared/img/friends-burgers.jpg"><img loading="lazy" src="../shared/img/friends-burgers.jpg" alt="Two friends sharing burgers" width="1067" height="1600"></button>
+    <button type="button" class="tile t11 photo" data-full="../shared/img/hero-ubud.jpg"><img loading="lazy" src="../shared/img/hero-ubud.jpg" alt="Rice terraces near Ubud" width="1400" height="1050"></button>
+    <div class="tile c-dark t11 fact"><b data-to="100">0</b><span data-i18n="f_kopi">free kopi on 1 Dec</span></div>
+  </div>
+</section>
+
+<!-- BAND 5: visit -->
+<section class="band" id="visit" aria-labelledby="visitH">
+  <div class="mosaic">
+    <div class="tile t22 map">
+      <div class="map__ph" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 4C20 4 11 13 11 25c0 15 21 35 21 35s21-20 21-35C53 13 44 4 32 4z" fill="#D50F04"/><circle cx="32" cy="25" r="8" fill="#FFF0D2"/></svg></div>
+      <iframe title="Map: Balibu, Jl. Sugriwa No. 60, Ubud" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Jl.+Sugriwa+No.+60,+Padangtegal+Kelod,+Ubud&amp;output=embed"></iframe>
+      <div class="map__lbl"><h2 id="visitH" data-i18n="find_h">Find us</h2><p>Jl. Sugriwa No. 60, Padangtegal Kelod, Ubud</p></div>
+    </div>
+    <form class="tile c-bright t22 book" id="book" novalidate>
+      <div class="book__form">
+        <h3 class="sm-h" data-i18n="book_h">Save a table</h3>
+        <p data-i18n="book_p">Tell us when you are coming and we will keep a table ready.</p>
+        <label><span data-i18n="f_name">Name</span><input name="name" required autocomplete="name" maxlength="60"></label>
+        <div class="book__row">
+          <label><span data-i18n="f_date">Date</span><input name="date" type="date" required min="2026-12-01"></label>
+          <label><span data-i18n="f_guests">Guests</span><select name="guests"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8+</option></select></label>
+        </div>
+        <label><span data-i18n="f_phone">WhatsApp number</span><input name="phone" type="tel" inputmode="tel" required autocomplete="tel" maxlength="20"></label>
+        <p class="book__err" id="bookErr" role="alert" hidden></p>
+        <button class="pill pill--dark" type="submit" data-i18n="book_btn">Hold my table</button>
+      </div>
+      <div class="book__ok" id="bookOk" role="status" hidden></div>
+    </form>
+    <div class="tile c-yellow t11 info">
+      <span class="k" data-i18n="hours_k">Open daily</span>
+      <b class="info__big">08–23</b>
+      <span data-i18n="hours">Daily 08:00 – 23:00</span>
+    </div>
+    <a class="tile c-red t11 info" href="https://wa.me/628214248077" target="_blank" rel="noopener">
+      <span class="k">WhatsApp</span>
+      <b class="info__mid">+62 821-4248-077</b>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+    <a class="tile c-dark t11 info" href="https://instagram.com/balibu.bar" target="_blank" rel="noopener">
+      <span class="k">Instagram</span>
+      <b class="info__mid">@balibu.bar</b>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+    <a class="tile c-cream t11 info" href="https://www.google.com/maps?q=Jl.+Sugriwa+No.+60,+Padangtegal+Kelod,+Ubud" target="_blank" rel="noopener">
+      <span class="k" data-i18n="route_k">Directions</span>
+      <b class="info__mid">Jl. Sugriwa 60</b>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <img class="foot__logo" loading="lazy" src="../shared/logo/wordmark-cream.png" alt="Balibu" width="1010" height="222">
+  <p>Balibu Bar &amp; Resto · Jl. Sugriwa No. 60, Padangtegal Kelod, Ubud · <span data-i18n="hours">Daily 08:00 – 23:00</span></p>
+  <p class="foot__note" data-i18n="footnote">Prices in thousands of rupiah (K). Subject to 15% tax &amp; service.</p>
+  <p class="foot__copy">© 2026 Balibu · Good food, good mood</p>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Photo">
+  <button type="button" class="lb__x" id="lbX" aria-label="Close">×</button>
+  <img id="lbImg" alt="">
+</div>
+
+<script src="../shared/menu.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

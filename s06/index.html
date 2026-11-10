@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Balibu Bar &amp; Resto — Ubud</title>
+<meta name="description" content="The Balibu board: burgers smashed to order, Kintamani coffee, house cocktails and a deal for every day of the week. Jl. Sugriwa 60, Ubud. Opening 1 December 2026.">
+<meta name="theme-color" content="#D50F04">
+<link rel="icon" type="image/png" href="../shared/logo/wordmark-red.png">
+<link rel="preload" href="../shared/fonts/BricolageGrotesque-wdth.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../shared/brand.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#board" data-i18n="skip">Skip to the board</a>
+
+<header class="hdr" id="hdr">
+  <div class="hdr-in">
+    <a class="hdr-logo" href="#top" aria-label="Balibu — back to top"><img src="../shared/logo/wordmark-cream.png" alt="Balibu" width="1010" height="222"></a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#board" data-i18n="nav_board">The Board</a>
+      <a href="#deals" data-i18n="nav_deals">Deals</a>
+      <a href="#combo" data-i18n="nav_combo">Combo</a>
+      <a href="#opening" data-i18n="nav_open">Opening</a>
+      <a href="#find" data-i18n="nav_find">Find us</a>
+    </nav>
+    <button class="lang" type="button" id="lang" aria-label="Language: EN / ID"><span data-l="en">EN</span> / <span data-l="id">ID</span></button>
+    <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="ticker" id="ticker" aria-label="News"><div class="ticker-track" id="tickerTrack"></div></div>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-h">
+  <div class="hero-l">
+    <p class="kicker" data-i18n="tagline">Burgers · Coffee · Ubud</p>
+    <h1 id="hero-h" class="hero-h"><span data-i18n="hero_1">What's on</span> <span data-i18n="hero_2">the board</span> <em data-i18n="hero_3">today</em></h1>
+    <p class="hero-p" data-i18n="hero_p">Burgers smashed to order, Kintamani coffee and house cocktails. Jl. Sugriwa No. 60, Ubud · daily 08 – 23.</p>
+    <div class="hero-cta">
+      <a class="btn btn-d" href="#board" data-i18n="cta_board">See the board</a>
+      <a class="btn btn-o" href="#find" data-i18n="cta_find">Find us</a>
+    </div>
+  </div>
+  <div class="hero-r">
+    <ol class="mini" aria-label="Today at Balibu">
+      <li class="mini-row r-cream">
+        <span class="mini-day" id="heroDay">MON</span>
+        <span class="mini-b"><b id="heroDeal">Smash Monday</b><small id="heroDesc">Balibu Smash + hand-cut fries</small></span>
+        <span class="pb pb-r" id="heroPrice">95K</span>
+      </li>
+      <li class="mini-row r-bright">
+        <span class="mini-day" data-i18n="daily">DAILY</span>
+        <span class="mini-b"><b data-i18n="hh_name">Happy hour</b><small data-i18n="hh_desc">2 for 1 house cocktails, 17 – 19</small></span>
+        <span class="pb pb-r">17–19</span>
+      </li>
+      <li class="mini-row r-cream">
+        <span class="mini-day">1 DEC</span>
+        <span class="mini-b"><b data-i18n="open_name">Opening night</b><small data-i18n="open_desc">First 100 guests: free Es Kopi Susu Aren</small></span>
+        <span class="pb pb-r" data-i18n="free">FREE</span>
+      </li>
+    </ol>
+    <div class="hero-ph"><img src="../shared/img/hero-fastfood.jpg" alt="Hands holding a burger and fries in paper boxes" width="1400" height="935" fetchpriority="high"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" aria-labelledby="about-h">
+  <div class="band"><span class="band-n">SEC 00</span><h2 id="about-h" class="band-t" data-i18n="about_h">House rules</h2><span class="band-x" data-i18n="about_x">Food, friends &amp; a good evening.</span></div>
+  <div class="about-in">
+    <ol class="rules">
+      <li class="row-in"><b>01</b><div><h3 data-i18n="r1">Smashed to order</h3><p data-i18n="r1p">Beef patties hit a hot griddle the minute you order. Brioche from our own oven.</p></div></li>
+      <li class="row-in"><b>02</b><div><h3 data-i18n="r2">Kintamani coffee</h3><p data-i18n="r2p">Arabica from the Kintamani highlands, roasted in Bali. Kopi tubruk the local way, or a flat white.</p></div></li>
+      <li class="row-in"><b>03</b><div><h3 data-i18n="r3">Louder after five</h3><p data-i18n="r3p">House cocktails with arak and passion fruit. Two for one, 17:00 – 19:00.</p></div></li>
+      <li class="row-in"><b>04</b><div><h3 data-i18n="r4">Open every day</h3><p data-i18n="r4p">08:00 – 23:00. Breakfast coffee to the last round.</p></div></li>
+    </ol>
+    <figure class="about-ph row-in"><img src="../shared/img/hero-barista.jpg" alt="A coffee counter seen through open glass doors" width="1200" height="1600" loading="lazy"><figcaption data-i18n="about_cap">Jl. Sugriwa 60 · Ubud</figcaption></figure>
+  </div>
+</section>
+
+<!-- THE BOARD -->
+<section class="board" id="board" aria-labelledby="board-h">
+  <div class="board-head">
+    <h2 id="board-h" class="board-h" data-i18n="board_h">The Board</h2>
+    <div class="board-tools">
+      <p id="boardSubT">8 sections · 37 plates &amp; pours · prices in K</p>
+      <button type="button" class="btn btn-c" id="openAll" data-i18n="open_all">Open all</button>
+    </div>
+  </div>
+  <div id="boardBody"></div>
+  <p class="board-foot" data-i18n="footnote">Prices in thousands of rupiah (K). Subject to 15% tax &amp; service.</p>
+</section>
+
+<!-- 7 DAYS -->
+<section class="deals" id="deals" aria-labelledby="deals-h">
+  <div class="deals-head">
+    <h2 id="deals-h" class="sec-h" data-i18n-html="deals_h">7 days<br>of deals</h2>
+    <p class="deals-sub"><span data-i18n="deals_today">Today in Ubud is</span> <b id="todayName">Monday</b>. <span data-i18n="deals_note">Deals run from opening day, 1 December.</span></p>
+  </div>
+  <div class="week" role="tablist" aria-label="Deals by weekday" id="week"><span class="week-ind" id="weekInd" aria-hidden="true"></span></div>
+  <div class="deal" id="deal" role="tabpanel" aria-live="polite">
+    <div class="deal-ph"><img id="dealImg" src="../shared/img/smash-burger.jpg" alt="" width="1400" height="935" loading="lazy"></div>
+    <div class="deal-b">
+      <p class="deal-day" id="dealDay">MONDAY</p>
+      <h3 class="deal-n" id="dealName">Smash Monday</h3>
+      <p class="deal-d" id="dealDesc">Balibu Smash + hand-cut fries</p>
+      <p class="pb pb-big pb-r" id="dealPrice">95K</p>
+    </div>
+  </div>
+</section>
+
+<!-- OPENING COUNTDOWN -->
+<section class="opening" id="opening" aria-labelledby="open-h">
+  <div class="open-in">
+    <div>
+      <p class="kicker kicker-y" data-i18n="open_kick">Opening night · 1 December 2026</p>
+      <h2 id="open-h" class="sec-h sec-h-c" data-i18n-html="open_h">Doors open<br>in</h2>
+      <div class="flips" id="flips" aria-label="Time until opening">
+        <div class="fu"><div class="fc" id="f-d">00</div><span data-i18n="u_d">days</span></div>
+        <div class="fu"><div class="fc" id="f-h">00</div><span data-i18n="u_h">hours</span></div>
+        <div class="fu"><div class="fc" id="f-m">00</div><span data-i18n="u_m">min</span></div>
+        <div class="fu"><div class="fc" id="f-s">00</div><span data-i18n="u_s">sec</span></div>
+      </div>
+      <p class="open-done" id="openDone" hidden data-i18n="open_done">We're open. Come say hi!</p>
+    </div>
+    <div class="free">
+      <img src="../shared/img/kopi-susu.jpg" alt="Es Kopi Susu Aren with palm sugar" width="1067" height="1600" loading="lazy">
+      <div class="free-b">
+        <b>100</b>
+        <p data-i18n="free_p">first guests get a free Es Kopi Susu Aren</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMBO -->
+<section class="combo" id="combo" aria-labelledby="combo-h">
+  <div class="combo-top">
+    <h2 id="combo-h" class="sec-h sec-h-c" data-i18n-html="combo_h">Smash<br>combo</h2>
+    <p class="kicker kicker-c" data-i18n="combo_kick">Every day · dine in or take away</p>
+  </div>
+  <ol class="rows combo-rows" id="comboRows">
+    <li class="row r-cream"><span class="row-n">01</span><div class="row-b"><h3>Balibu Smash</h3><p data-item="b1"></p></div><span class="pb pb-d strike">95K</span><img class="row-ph" src="../shared/img/t/smash-burger.jpg" alt="Balibu Smash" width="64" height="64" loading="lazy"></li>
+    <li class="row r-bright"><span class="row-n">02</span><div class="row-b"><h3 data-i18n="c2n">Hand-cut fries</h3><p data-item="s1"></p></div><span class="pb pb-d strike">38K</span><img class="row-ph" src="../shared/img/t/fries.jpg" alt="Hand-cut fries" width="64" height="64" loading="lazy"></li>
+    <li class="row r-cream"><span class="row-n">03</span><div class="row-b"><h3 data-i18n="c3n">Iced lemon tea</h3><p data-item="f4"></p></div><span class="pb pb-d strike">32K</span><img class="row-ph" src="../shared/img/t/iced-tea.jpg" alt="Iced lemon tea" width="64" height="64" loading="lazy"></li>
+  </ol>
+  <div class="combo-sum">
+    <div><p class="kicker kicker-c" data-i18n="all3">All three for</p><p class="combo-big">125K</p></div>
+    <div class="combo-save"><s data-i18n="instead">Instead of 165K</s><b data-i18n="save">Save 40K</b><a class="btn btn-y" href="https://wa.me/628214248077" target="_blank" rel="noopener" data-i18n="combo_cta">Ask on WhatsApp</a></div>
+  </div>
+</section>
+
+<!-- HAPPY HOUR -->
+<section class="happy" id="happy" aria-labelledby="happy-h">
+  <div class="happy-l">
+    <p class="kicker" data-i18n="happy_kick">Happy hour · every day</p>
+    <h2 id="happy-h" class="happy-h">17<i>—</i>19</h2>
+    <p class="happy-p" data-i18n="happy_p">Two for one on house cocktails, every day 17:00 – 19:00.</p>
+    <p class="status" id="hhStatus" aria-live="polite"></p>
+  </div>
+  <ul class="happy-list" id="happyList"></ul>
+</section>
+
+<!-- GALLERY -->
+<section class="wall" id="mood" aria-labelledby="wall-h">
+  <div class="band"><span class="band-n">SEC 09</span><h2 id="wall-h" class="band-t" data-i18n="wall_h">On the wall</h2><span class="band-x" data-i18n="wall_x">Tap a photo to open it.</span></div>
+  <div class="wall-grid" id="wall">
+    <button type="button" class="pic p1" data-cap="g1"><img src="../shared/img/hero-friends.jpg" alt="Two burgers held up across the table" width="1400" height="935" loading="lazy"><span class="pic-n">01</span></button>
+    <button type="button" class="pic p2" data-cap="g2"><img src="../shared/img/hero-bartender.jpg" alt="Three cocktails on a dark bar" width="1067" height="1600" loading="lazy"><span class="pic-n">02</span></button>
+    <button type="button" class="pic p3" data-cap="g3"><img src="../shared/img/night-burger.jpg" alt="A burger at night under warm lights" width="1067" height="1600" loading="lazy"><span class="pic-n">03</span></button>
+    <button type="button" class="pic p4" data-cap="g4"><img src="../shared/img/hero-ubud.jpg" alt="Rice terraces near Ubud" width="1400" height="1050" loading="lazy"><span class="pic-n">04</span></button>
+    <button type="button" class="pic p5" data-cap="g5"><img src="../shared/img/hero-party.jpg" alt="Rows of coupe glasses ready for a party" width="1067" height="1600" loading="lazy"><span class="pic-n">05</span></button>
+    <button type="button" class="pic p6" data-cap="g6"><img src="../shared/img/yellow-stack.jpg" alt="A tall burger on a yellow background" width="1600" height="1200" loading="lazy"><span class="pic-n">06</span></button>
+  </div>
+</section>
+
+<!-- FIND + BOOK -->
+<section class="find" id="find" aria-labelledby="find-h">
+  <div class="band band-r"><span class="band-n">SEC 10</span><h2 id="find-h" class="band-t" data-i18n="find_h">Find us</h2><span class="band-x">Jl. Sugriwa No. 60 · Ubud</span></div>
+  <div class="find-in">
+    <div class="find-l">
+      <address>Jl. Sugriwa No. 60,<br>Padangtegal Kelod, Ubud, Bali</address>
+      <table class="hours" aria-label="Opening hours">
+        <tbody id="hoursBody"></tbody>
+      </table>
+      <div class="find-cta">
+        <a class="btn btn-r" href="https://wa.me/628214248077" target="_blank" rel="noopener" data-i18n="wa">WhatsApp +62 821-4248-077</a>
+        <a class="btn btn-o" href="https://www.instagram.com/balibu.bar/" target="_blank" rel="noopener">@balibu.bar</a>
+      </div>
+    </div>
+    <div class="map"><iframe title="Map: Balibu, Jl. Sugriwa No. 60, Ubud" src="https://www.google.com/maps?q=Jl.+Sugriwa+No.+60,+Padangtegal+Kelod,+Ubud&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+  </div>
+  <form class="book" id="book" novalidate aria-labelledby="book-h">
+    <h3 id="book-h" data-i18n="book_h">Reserve a table</h3>
+    <label><span data-i18n="b_name">Name</span><input name="name" type="text" autocomplete="name" required maxlength="40"></label>
+    <label><span data-i18n="b_contact">WhatsApp or email</span><input name="contact" type="text" autocomplete="email" required maxlength="80"></label>
+    <label><span data-i18n="b_date">Date</span><input name="date" type="date" min="2026-12-01" required></label>
+    <label><span data-i18n="b_guests">Guests</span><select name="guests"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7+</option></select></label>
+    <button class="btn btn-d" type="submit" data-i18n="b_btn">Hold my table</button>
+    <p class="book-msg" id="bookMsg" role="status"></p>
+  </form>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <img src="../shared/logo/wordmark-cream.png" alt="Balibu" width="1010" height="222" loading="lazy" class="foot-logo">
+    <p class="foot-a">Balibu Bar &amp; Resto · Jl. Sugriwa No. 60, Padangtegal Kelod, Ubud · <span data-i18n="hours">Daily 08:00 – 23:00</span></p>
+    <p class="foot-a"><a href="https://wa.me/628214248077" target="_blank" rel="noopener">+62 821-4248-077</a> · <a href="https://www.instagram.com/balibu.bar/" target="_blank" rel="noopener">@balibu.bar</a></p>
+    <p class="foot-n" data-i18n="footnote">Prices in thousands of rupiah (K). Subject to 15% tax &amp; service.</p>
+  </div>
+</footer>
+
+<dialog class="lb" id="lb" aria-label="Photo">
+  <img id="lbImg" alt="">
+  <p id="lbCap"></p>
+  <button type="button" class="lb-x" id="lbX" aria-label="Close">×</button>
+</dialog>
+
+<script src="../shared/menu.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
