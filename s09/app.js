@@ -33,7 +33,7 @@
       book_h: 'Save a table', book_p: 'Tell us when you are coming and we will keep a table ready.',
       f_name: 'Name', f_date: 'Date', f_guests: 'Guests', f_phone: 'WhatsApp number', book_btn: 'Hold my table',
       err_name: 'Please tell us your name.', err_date: 'Pick a date from 1 December.', err_phone: 'Add a WhatsApp number so we can reach you.',
-      ok_h: 'Thanks, {n}!', ok_p: 'Table for {g} on {d} — noted. Online booking opens soon; until then, message us on WhatsApp and we will hold it.', ok_again: 'Change details',
+      ok_h: 'Thanks, {n}!', ok_p: 'Table for {g} on {d} — noted. Online booking opens soon; until then, message us on WhatsApp and we will hold it.', ok_again: 'Change details', ok_wa: 'Message us on WhatsApp', wa_msg: 'Hi Balibu! Table for {g} on {d}, name {n}, phone {p}.', doc_title: 'Balibu Bar & Resto — Ubud',
       show: 'show ingredients', flip_back: 'Tap to flip back',
       fill_hint_k: 'How it works', fill_hint_h: 'Tap a tile', fill_hint_p: 'Flip any dish to see what is inside.',
       fill_next_k: 'Next up', fill_wa_k: 'Hungry?', fill_wa_h: 'Order on WhatsApp',
@@ -60,7 +60,7 @@
       book_h: 'Pesan meja', book_p: 'Kabari kami kapan Anda datang, kami siapkan mejanya.',
       f_name: 'Nama', f_date: 'Tanggal', f_guests: 'Tamu', f_phone: 'Nomor WhatsApp', book_btn: 'Pesan meja saya',
       err_name: 'Mohon isi nama Anda.', err_date: 'Pilih tanggal mulai 1 Desember.', err_phone: 'Tambahkan nomor WhatsApp agar kami bisa menghubungi Anda.',
-      ok_h: 'Terima kasih, {n}!', ok_p: 'Meja untuk {g} orang pada {d} — dicatat. Pemesanan online segera dibuka; sementara itu, kirim pesan WhatsApp dan kami simpan mejanya.', ok_again: 'Ubah detail',
+      ok_h: 'Terima kasih, {n}!', ok_p: 'Meja untuk {g} orang pada {d} — dicatat. Pemesanan online segera dibuka; sementara itu, kirim pesan WhatsApp dan kami simpan mejanya.', ok_again: 'Ubah detail', ok_wa: 'Kirim pesan lewat WhatsApp', wa_msg: 'Halo Balibu! Meja untuk {g} orang pada {d}, nama {n}, telepon {p}.', doc_title: 'Balibu Bar & Resto — Ubud',
       show: 'lihat bahan', flip_back: 'Ketuk untuk kembali',
       fill_hint_k: 'Cara pakai', fill_hint_h: 'Ketuk kartu', fill_hint_p: 'Balik kartu menu untuk melihat bahannya.',
       fill_next_k: 'Berikutnya', fill_wa_k: 'Lapar?', fill_wa_h: 'Pesan via WhatsApp',
@@ -252,7 +252,7 @@
 
   /* ---------- i18n ---------- */
   function applyLang() {
-    root.lang = lang;
+    root.lang = lang; D.title = t('doc_title'); if (typeof setMenu === 'function' && navlinks.classList.contains('open')) setMenu(false);
     D.querySelectorAll('[data-i18n]').forEach(function (el) { el.innerHTML = t(el.getAttribute('data-i18n')); });
     D.querySelectorAll('.lang__b').forEach(function (b) { var on = b.getAttribute('data-lang') === lang; b.classList.toggle('is-on', on); b.setAttribute('aria-pressed', on); });
     D.querySelectorAll('.tile--dish').forEach(refreshDish);
@@ -345,6 +345,9 @@
     ok.innerHTML = '<b></b><p></p><button type="button" class="pill pill--dark"></button>';
     ok.querySelector('b').textContent = t('ok_h').replace('{n}', b.n.slice(0, 40));
     ok.querySelector('p').textContent = t('ok_p').replace('{g}', b.g).replace('{d}', ds);
+    var wa = D.createElement('a'); wa.className = 'pill pill--dark'; wa.target = '_blank'; wa.rel = 'noopener'; wa.textContent = t('ok_wa');
+    wa.href = 'https://wa.me/628214248077?text=' + encodeURIComponent(t('wa_msg').replace('{g}', b.g).replace('{d}', ds).replace('{n}', b.n.slice(0, 40)).replace('{p}', b.p || ''));
+    ok.insertBefore(wa, ok.querySelector('button'));
     var again = ok.querySelector('button'); again.textContent = t('ok_again');
     again.addEventListener('click', function () { ok.hidden = true; form.querySelector('.book__form').hidden = false; form.name.focus(); });
   }
@@ -353,7 +356,7 @@
     var n = form.name.value.trim(), d = form.date.value, ph = form.phone.value.trim(), msg = '';
     if (!n) msg = t('err_name'); else if (!d || d < '2026-12-01') msg = t('err_date'); else if (!/^[0-9 +()-]{7,20}$/.test(ph)) msg = t('err_phone');
     if (msg) { err.textContent = msg; err.hidden = false; return; }
-    err.hidden = true; lastBook = { n: n, d: d, g: form.guests.value };
+    err.hidden = true; lastBook = { n: n, d: d, g: form.guests.value, p: ph };
     showOk(lastBook); form.querySelector('.book__form').hidden = true; ok.hidden = false;
   });
 

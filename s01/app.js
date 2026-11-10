@@ -161,7 +161,7 @@
     $('.hdr-logo img').src = '../shared/logo/wordmark-' + (open ? 'dark' : 'cream') + '.png';
   }
   burger.addEventListener('click', function () { setNav(!nav.classList.contains('open')); });
-  nav.addEventListener('click', function (e) { if (e.target.closest('a')) setNav(false); });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a') || e.target === nav) setNav(false); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && nav.classList.contains('open')) { setNav(false); burger.focus(); } });
 
   /* ---------- scroll: header, parallax, gallery drift ---------- */

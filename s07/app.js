@@ -13,7 +13,7 @@
   var T = {
     en: {
       'skip': 'Skip to content',
-      'nav.menu': 'Menu', 'nav.combo': 'Combo', 'nav.happy': 'Happy hour', 'nav.visit': 'Find us', 'nav.book': 'Book a table',
+      'nav.story': 'Story', 'nav.photos': 'Photos', 'nav.menu': 'Menu', 'nav.combo': 'Combo', 'nav.happy': 'Happy hour', 'nav.visit': 'Find us', 'nav.book': 'Book a table',
       's1.name': 'Anatomy', 's2.name': 'Opening', 's3.name': 'Specification', 's4.name': 'Menu', 's5.name': 'Smash Combo', 's6.name': 'Happy hour', 's7.name': 'Site photos', 's8.name': 'Request form', 's9.name': 'Location',
       's2.meta': 'Date · offer', 's3.meta': 'About the place', 's4.meta': 'Fig. 01 – 08 · prices in K¹', 's5.meta': 'Fig. 09 · exploded view', 's7.meta': 'Tap to enlarge', 's8.meta': 'Table booking',
       'hours.short': 'Daily 08:00 – 23:00', 'hours.long': 'Daily 08:00 – 23:00 · happy hour 17:00 – 19:00',
@@ -49,7 +49,7 @@
     },
     id: {
       'skip': 'Langsung ke konten',
-      'nav.menu': 'Menu', 'nav.combo': 'Kombo', 'nav.happy': 'Happy hour', 'nav.visit': 'Lokasi', 'nav.book': 'Pesan meja',
+      'nav.story': 'Cerita', 'nav.photos': 'Foto', 'nav.menu': 'Menu', 'nav.combo': 'Kombo', 'nav.happy': 'Happy hour', 'nav.visit': 'Lokasi', 'nav.book': 'Pesan meja',
       's1.name': 'Anatomi', 's2.name': 'Pembukaan', 's3.name': 'Spesifikasi', 's4.name': 'Menu', 's5.name': 'Smash Combo', 's6.name': 'Happy hour', 's7.name': 'Foto lokasi', 's8.name': 'Formulir', 's9.name': 'Lokasi',
       's2.meta': 'Tanggal · promo', 's3.meta': 'Tentang tempat ini', 's4.meta': 'Gbr. 01 – 08 · harga dalam K¹', 's5.meta': 'Gbr. 09 · tampilan urai', 's7.meta': 'Ketuk untuk memperbesar', 's8.meta': 'Reservasi meja',
       'hours.short': 'Setiap hari 08.00 – 23.00', 'hours.long': 'Setiap hari 08.00 – 23.00 · happy hour 17.00 – 19.00',
@@ -107,6 +107,7 @@
   /* ---------- menu: Fig. 01–08 technical tables ---------- */
   var figs = $('#figs');
   function renderMenu() {
+    var seen = {}; $$('#figs .fig.in').forEach(function (n) { seen[n.id] = 1; });
     figs.textContent = '';
     M.sections.forEach(function (sec, si) {
       var f = el('section', 'fig'); f.id = 'fig-' + sec.id; f.setAttribute('aria-labelledby', 'fh-' + sec.id);
@@ -134,6 +135,7 @@
         tb.appendChild(r);
       });
       t.appendChild(tb); f.appendChild(t); figs.appendChild(f);
+      if (seen[f.id]) { f.classList.add('in'); $$('.count', f).forEach(function (c) { c.dataset.done = '1'; }); }
     });
     applyFilter();
   }
@@ -323,6 +325,15 @@
     form.hidden = true; done.hidden = false; done.focus();
   });
   $('#bookAgain').addEventListener('click', function () { done.hidden = true; form.hidden = false; form.reset(); fillGuests(); F.name.focus(); });
+
+  /* ---------- focus ring for date field and map frame (their inner focus hides :focus) ---------- */
+  function markFocus() {
+    $$('.kf').forEach(function (n) { n.classList.remove('kf'); });
+    var a = doc.activeElement;
+    if (a && a.matches && a.matches('.fld input, .fld select, .map iframe')) a.classList.add('kf');
+  }
+  ['focusin', 'focusout', 'keyup', 'click'].forEach(function (ev) { doc.addEventListener(ev, function () { setTimeout(markFocus, 0); }, true); });
+  window.addEventListener('blur', function () { setTimeout(markFocus, 0); });
 
   /* ---------- init ---------- */
   applyLang(lang); onScroll();

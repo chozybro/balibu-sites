@@ -32,6 +32,7 @@ a{color:inherit}
 .hdr{position:sticky;top:0;z-index:50;background:var(--red);height:var(--hh);transition:height .3s var(--ease),box-shadow .3s}
 .hdr.sm{height:64px;box-shadow:0 3px 0 var(--dark)}
 .hdr-in{height:100%;display:flex;align-items:center;gap:28px;padding:0 var(--px)}
+.hdr-logo{display:inline-flex;align-items:center;min-height:44px}
 .hdr-logo img{height:44px;width:auto;transition:height .3s var(--ease)}
 .hdr.sm .hdr-logo img{height:32px}
 .nav{margin-left:auto;display:flex;gap:6px}
@@ -253,7 +254,7 @@ html[lang=en] .lang [data-l=en],html[lang=id] .lang [data-l=id]{opacity:1;color:
 .foot-in{display:grid;gap:14px}
 .foot-logo{height:44px;width:auto}
 .foot-a{margin:0;font-size:16px;line-height:1.6}
-.foot-a a{display:inline-block;padding:6px 0}
+.foot-a a{display:inline-flex;align-items:center;min-height:44px;padding:0 2px}
 .foot-n{margin:6px 0 0;font-size:14px;opacity:.9}
 
 @media (max-width:1020px){

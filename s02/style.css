@@ -43,7 +43,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .hdr{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .4s,backdrop-filter .4s}
 .hdr__in{display:flex;align-items:center;gap:40px;height:var(--hdr);position:relative}
 .hdr__in::after{content:"";position:absolute;left:var(--pad);right:var(--pad);bottom:0;height:1px;background:var(--line);transform-origin:left;animation:draw 1.6s .4s var(--ease) both}
-.hdr.is-scrolled{background:rgba(22,22,22,.84);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.hdr.is-scrolled{background:var(--ink);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
 .hdr__logo{display:flex;align-items:center;min-height:44px}
 .hdr__logo img{height:36px;width:auto}
 .hdr__nav{display:flex;gap:6px;margin-left:auto}
@@ -169,7 +169,7 @@ section{position:relative}
   .item:hover .item__ph{transform:scale(1.12);box-shadow:0 0 0 1px var(--yellow),0 0 0 6px rgba(255,174,46,.12)}
   .item:hover .item__name{color:var(--bright)}
 }
-.peek{position:fixed;left:0;top:0;width:240px;height:240px;border-radius:50%;overflow:hidden;pointer-events:none;z-index:40;opacity:0;transform:translate(-50%,-50%) scale(.6);transition:opacity .35s,transform .45s var(--ease);box-shadow:0 30px 80px rgba(0,0,0,.6);outline:1px solid var(--line);outline-offset:8px}
+.peek{position:fixed;left:0;top:0;width:220px;height:220px;border-radius:50%;overflow:hidden;pointer-events:none;z-index:40;opacity:0;transform:translate(-50%,-50%) scale(.6);transition:opacity .35s,transform .45s var(--ease);box-shadow:0 30px 80px rgba(0,0,0,.6);outline:1px solid var(--line);outline-offset:8px}
 .peek img{width:100%;height:100%;object-fit:cover}
 .peek.on{opacity:1}
 
@@ -239,14 +239,17 @@ section{position:relative}
 .field input,.field select{appearance:none;-webkit-appearance:none;min-height:48px;padding:8px 0;background:transparent;border:0;border-bottom:1px solid rgba(255,240,210,.3);border-radius:0;color:var(--cream);font:300 19px var(--font-text);color-scheme:dark;transition:border-color .3s}
 .field select{background-image:linear-gradient(45deg,transparent 50%,var(--yellow) 50%),linear-gradient(135deg,var(--yellow) 50%,transparent 50%);background-position:calc(100% - 12px) 22px,calc(100% - 7px) 22px;background-size:5px 5px;background-repeat:no-repeat;cursor:pointer}
 .field select option{background:var(--ink);color:var(--cream)}
-.field input:focus,.field select:focus{outline:0;border-bottom-color:var(--yellow)}
+.field input:focus,.field select:focus,.field input:focus-within{outline:0;border-bottom-color:var(--yellow);box-shadow:0 1px 0 var(--yellow)}
+.field input::-webkit-calendar-picker-indicator:focus-visible{outline:1px solid var(--yellow);outline-offset:2px}
+.field .form__err{margin-top:2px;min-height:0}
+.field .form__err:empty{display:none}
 .field input::placeholder{color:rgba(255,240,210,.3)}
 .field input[aria-invalid="true"]{border-bottom-color:var(--red)}
 .field--btn{justify-content:flex-end}
 .form__err{grid-column:1/-1;margin:0;min-height:1.4em;color:var(--bright);font-size:14px}
 .done{border:1px solid var(--line);padding:clamp(28px,3.4vw,48px);animation:fadeUp .8s var(--ease) both}
 .done:focus{outline:0}
-.done__title{font-family:var(--font-display);font-weight:300;font-size:clamp(26px,2.6vw,36px);line-height:1.2;margin:0 0 18px}
+.done__title{overflow-wrap:anywhere;font-family:var(--font-display);font-weight:300;font-size:clamp(26px,2.6vw,36px);line-height:1.2;margin:0 0 18px}
 .done__row{display:flex;flex-wrap:wrap;gap:12px 32px;align-items:center;margin-top:10px}
 
 /* visit */
@@ -256,7 +259,7 @@ section{position:relative}
 .info div{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line-soft)}
 .info dt{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--yellow);padding-top:4px}
 .info dd{margin:0;color:var(--cream)}
-.info a{text-decoration:none;display:inline-block;padding:4px 0;border-bottom:1px solid transparent;transition:border-color .3s,color .3s}
+.info a{text-decoration:none;display:inline-flex;align-items:center;min-height:44px;padding:4px 0;border-bottom:1px solid transparent;transition:border-color .3s,color .3s}
 .info a:hover{color:var(--yellow);border-bottom-color:var(--yellow)}
 .map{position:relative;min-height:460px;border-radius:2px;overflow:hidden;outline:1px solid var(--line);outline-offset:12px;margin:12px}
 .map{background:var(--ink-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='%23FFAE2E' stroke-width='1'%3E%3Cpath d='M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z'/%3E%3Ccircle cx='12' cy='9.5' r='2.5'/%3E%3C/svg%3E") center/48px no-repeat}
@@ -269,7 +272,7 @@ section{position:relative}
 .foot__brand img{width:220px;height:auto}
 .foot__k{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--yellow);margin:0 0 10px}
 .foot__grid p{margin:0;color:var(--txt)}
-.foot__grid a{text-decoration:none;display:inline-block;min-height:32px}
+.foot__grid a,.foot__base a{text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
 .foot__grid a:hover,.foot__base a:hover{color:var(--yellow)}
 .foot__base{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;margin-top:64px;padding-top:24px;border-top:1px solid var(--line-soft);font-size:13px;color:var(--txt-dim)}
 .foot__base p{margin:0}
@@ -291,7 +294,8 @@ section{position:relative}
   .hdr__logo img{height:30px}
   .hero{justify-content:flex-end}
   .hero__media{width:100%;height:72%;bottom:auto}
-  .hero__fade{background:linear-gradient(0deg,var(--ink) 30%,rgba(22,22,22,.75) 44%,rgba(22,22,22,0) 70%),linear-gradient(180deg,rgba(22,22,22,.75) 0%,rgba(22,22,22,0) 22%)}
+  .hero__eyebrow{text-shadow:0 0 14px var(--ink),0 1px 3px var(--ink)}
+  .hero__fade{background:linear-gradient(0deg,var(--ink) 38%,rgba(22,22,22,.9) 54%,rgba(22,22,22,0) 78%),linear-gradient(180deg,rgba(22,22,22,.75) 0%,rgba(22,22,22,0) 22%)}
   .hero__body{padding-bottom:28px}
   .hero__meta{flex-direction:column;align-items:flex-start;gap:10px}
   .scrollcue{display:none}

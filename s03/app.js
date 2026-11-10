@@ -213,8 +213,10 @@
     err.hidden = true;
     var dd = new Date(d + 'T12:00:00').toLocaleDateString(lang === 'id' ? 'id-ID' : 'en-GB', { day: 'numeric', month: 'long' });
     ok.innerHTML = T[lang].ok(esc(n), esc(dd), esc(g)); ok.hidden = false;
-    form.querySelector('button[type=submit]').disabled = true;
+    form.dataset.sent = '1';
   });
+
+  form.addEventListener('input', function () { if (form.dataset.sent) { delete form.dataset.sent; document.getElementById('bookOk').hidden = true; } });
 
   /* ---------- parallax + header ---------- */
   var par = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));

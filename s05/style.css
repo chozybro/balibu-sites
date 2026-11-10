@@ -66,7 +66,7 @@ section{position:relative;padding:72px 0}
 .nav-links a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border:3px solid transparent;font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:background .15s,border-color .15s,box-shadow .15s,transform .15s}
 .nav-links a:hover,.nav-links a.cur{background:var(--cream);border-color:var(--ink);box-shadow:4px 4px 0 var(--ink);transform:translate(-1px,-1px)}
 .nav-links .nav-book{background:var(--red);color:var(--cream);border-color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
-.btn-lang{min-height:44px;min-width:64px;padding:0 10px;background:var(--cream);border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);font:800 13px/1 var(--font-text);letter-spacing:.08em;cursor:pointer;color:rgba(35,35,35,.45)}
+.btn-lang{min-height:44px;min-width:64px;padding:0 10px;background:var(--cream);border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);font:800 13px/1 var(--font-text);letter-spacing:.08em;cursor:pointer;color:rgba(35,35,35,.72)}
 .btn-lang .on{color:var(--red)}
 .burger{display:none;width:48px;height:48px;background:var(--cream);border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:5px;padding:0}
 .burger i{display:block;width:22px;height:3px;background:var(--ink);transition:transform .25s}

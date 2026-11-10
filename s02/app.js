@@ -37,6 +37,7 @@
       'book.name': 'Name', 'book.phone': 'WhatsApp number', 'book.date': 'Date', 'book.time': 'Time', 'book.guests': 'Guests', 'book.send': 'Request a table',
       'book.doneEyebrow': 'Noted', 'book.doneNote': 'This page is a preview, so nothing was sent yet. To book for real, message us on WhatsApp.', 'book.again': 'New request',
       'visit.eyebrow': 'Find us', 'visit.title': 'On Jl. Sugriwa.', 'visit.addr': 'Address', 'visit.hours': 'Hours', 'visit.talk': 'Talk to us', 'visit.route': 'Open in Google Maps',
+      'aria.logo': 'Balibu, back to top', 'aria.main': 'Main', 'aria.lang': 'Language', 'aria.open': 'Open navigation', 'aria.close': 'Close navigation', 'aria.mobile': 'Mobile', 'aria.prev': 'Previous photos', 'aria.next': 'Next photos', 'aria.menu': 'Menu sections', 'aria.strip': 'Photo strip, scroll sideways', 
       'foot.follow': 'Follow', 'foot.top': 'Back to top ↑'
     },
     id: {
@@ -66,6 +67,7 @@
       'book.name': 'Nama', 'book.phone': 'Nomor WhatsApp', 'book.date': 'Tanggal', 'book.time': 'Jam', 'book.guests': 'Jumlah tamu', 'book.send': 'Minta meja',
       'book.doneEyebrow': 'Tercatat', 'book.doneNote': 'Halaman ini masih pratinjau, jadi belum ada yang terkirim. Untuk reservasi sungguhan, kirim pesan WhatsApp.', 'book.again': 'Permintaan baru',
       'visit.eyebrow': 'Lokasi', 'visit.title': 'Di Jl. Sugriwa.', 'visit.addr': 'Alamat', 'visit.hours': 'Jam buka', 'visit.talk': 'Hubungi kami', 'visit.route': 'Buka di Google Maps',
+      'aria.logo': 'Balibu, kembali ke atas', 'aria.main': 'Utama', 'aria.lang': 'Bahasa', 'aria.open': 'Buka navigasi', 'aria.close': 'Tutup navigasi', 'aria.mobile': 'Seluler', 'aria.prev': 'Foto sebelumnya', 'aria.next': 'Foto berikutnya', 'aria.menu': 'Bagian menu', 'aria.strip': 'Deretan foto, gulir ke samping', 
       'foot.follow': 'Ikuti', 'foot.top': 'Kembali ke atas ↑'
     }
   };
@@ -135,6 +137,7 @@
   function applyLang(l) {
     lang = l; root.lang = l;
     $$('[data-i18n]').forEach(function (n) { var v = T[l][n.getAttribute('data-i18n')]; if (v != null) n.textContent = v; });
+    $$('[data-aria]').forEach(function (n) { var k = n.getAttribute('data-aria'); if (k === 'open' && n.getAttribute('aria-expanded') === 'true') k = 'close'; n.setAttribute('aria-label', T[l]['aria.' + k]); });
     $$('.lang button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === l)); });
     renderMenu(); fillGuests(); observeAll(); tick(); countdown(); bindPeek();
     try { localStorage.setItem('balibu-lang', l); } catch (e) { /* storage blocked */ }
@@ -170,7 +173,7 @@
   /* ---------- header + drawer ---------- */
   var hdr = $('#hdr'), burger = $('.burger'), drawer = $('#drawer');
   function setDrawer(open) {
-    burger.setAttribute('aria-expanded', String(open)); burger.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    burger.setAttribute('aria-expanded', String(open)); burger.setAttribute('aria-label', T[lang]['aria.' + (open ? 'close' : 'open')]);
     if (open) { drawer.hidden = false; requestAnimationFrame(function () { drawer.classList.add('is-open'); }); doc.body.style.overflow = 'hidden'; hdr.classList.add('is-scrolled'); }
     else { drawer.classList.remove('is-open'); doc.body.style.overflow = ''; setTimeout(function () { if (burger.getAttribute('aria-expanded') === 'false') drawer.hidden = true; }, 400); onScroll(); }
   }
@@ -195,18 +198,23 @@
 
   /* ---------- cursor-follow preview in the menu ---------- */
   var peek = $('#peek'), peekImg = peek.querySelector('img'), px = 0, py = 0, raf = 0;
+  var menuIdx = $('.menu__index');
+  /* the preview sits under the sticky section index, so it never covers the item being read */
+  function placePeek() {
+    var r = menuIdx.getBoundingClientRect();
+    px = r.left + 110; py = Math.min(r.bottom + 24 + 110, window.innerHeight - 130);
+    if (!raf) raf = requestAnimationFrame(function () { raf = 0; peek.style.transform = 'translate(' + (px - 110) + 'px,' + (py - 110) + 'px) scale(' + (peek.classList.contains('on') ? 1 : .6) + ')'; });
+  }
   function bindPeek() {
     if (!finePointer || reduced) return;
     $$('.item').forEach(function (it) {
-      it.addEventListener('mouseenter', function () { peekImg.src = '../shared/img/t/' + it.dataset.photo + '.jpg'; peek.classList.add('on'); });
+      it.addEventListener('mouseenter', function () { peekImg.src = '../shared/img/t/' + it.dataset.photo + '.jpg'; placePeek(); peek.classList.add('on'); });
       it.addEventListener('mouseleave', function () { peek.classList.remove('on'); });
     });
   }
   if (finePointer && !reduced) {
     body.addEventListener('mousemove', function (e) {
-      px = e.clientX + 170; py = e.clientY;
-      if (px > window.innerWidth - 130) px = e.clientX - 170;
-      if (!raf) raf = requestAnimationFrame(function () { raf = 0; peek.style.transform = 'translate(' + (px - 120) + 'px,' + (py - 120) + 'px) scale(' + (peek.classList.contains('on') ? 1 : .6) + ')'; });
+      placePeek();
     });
   }
 
@@ -260,12 +268,15 @@
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var name = F.name.value.trim(), phone = F.phone.value.trim(), date = F.date.value, time = F.time.value, bad = null, msg = '';
-    $$('input,select', form).forEach(function (n) { n.removeAttribute('aria-invalid'); });
+    $$('input,select', form).forEach(function (n) { n.removeAttribute('aria-invalid'); n.removeAttribute('aria-describedby'); });
     if (!name) { bad = F.name; msg = MSG[lang].errName; }
     else if (!/^\+?[0-9][0-9\s-]{6,18}$/.test(phone)) { bad = F.phone; msg = MSG[lang].errPhone; }
     else if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || date < '2026-12-01') { bad = F.date; msg = MSG[lang].errDate; }
     else if (!time) { bad = F.time; msg = MSG[lang].errTime; }
-    if (bad) { err.textContent = msg; bad.setAttribute('aria-invalid', 'true'); bad.focus(); return; }
+    if (bad) {
+      bad.closest('.field').appendChild(err); err.textContent = msg; bad.setAttribute('aria-describedby', 'formErr'); bad.setAttribute('aria-invalid', 'true');
+      bad.focus({ preventScroll: true }); bad.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' }); return;
+    }
     err.textContent = '';
     var p = date.split('-'), dt = new Date(Date.UTC(+p[0], +p[1] - 1, +p[2]));
     var dStr = dt.toLocaleDateString(lang === 'id' ? 'id-ID' : 'en-GB', { day: 'numeric', month: 'long', timeZone: 'UTC' });

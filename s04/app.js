@@ -30,9 +30,9 @@
       f_hours: 'hours open, every day', f_items: 'dishes &amp; drinks', f_kopi: 'free kopi on 1 Dec',
       find_kicker: 'Hours &amp; location', find_h: 'Find us', map_open: 'Open in Google Maps', hours: 'Daily 08:00 – 23:00',
       book_h: 'Save a table', book_p: 'Tell us when you are coming and we will keep a table warm.',
-      f_name: 'Name', f_date: 'Date', f_guests: 'Guests', f_phone: 'WhatsApp number', book_btn: 'Hold my table',
+      f_name: 'Name', f_date: 'Date', f_guests: 'Guests', f_phone: 'WhatsApp number', book_btn: 'Send my request', ok_wa: 'Confirm on WhatsApp', wa_msg: 'Hi Balibu! Table for {g} on {d}. Name: {n}. My number: {p}',
       err_name: 'Please tell us your name.', err_date: 'Pick a date from 1 December.', err_phone: 'Add a WhatsApp number so we can reach you.',
-      ok_h: 'Thanks, {n}!', ok_p: 'Table for {g} on {d} — noted. Online booking opens soon; until then, message us on WhatsApp and we will hold it.',
+      ok_h: 'Thanks, {n}!', ok_p: 'Table for {g} on {d} — noted. Your request is not sent yet: tap the button below to confirm it on WhatsApp and we will hold the table.',
       live_on: 'Happy hour is on — until 19:00', live_in: 'Next happy hour in {h}h {m}m', live_pre: ' · from 1 Dec',
       open_now: 'We are open — come by!',
       ticker: ['Smashed to order', 'Kintamani coffee', 'House cocktails', 'Happy hour 17–19', 'Opening 1 December', 'Good food, good mood'],
@@ -58,9 +58,9 @@
       f_hours: 'jam buka, setiap hari', f_items: 'makanan &amp; minuman', f_kopi: 'kopi gratis 1 Des',
       find_kicker: 'Jam &amp; lokasi', find_h: 'Temukan kami', map_open: 'Buka di Google Maps', hours: 'Setiap hari 08.00 – 23.00',
       book_h: 'Pesan meja', book_p: 'Kabari kami kapan Anda datang, kami siapkan mejanya.',
-      f_name: 'Nama', f_date: 'Tanggal', f_guests: 'Tamu', f_phone: 'Nomor WhatsApp', book_btn: 'Pesan meja saya',
+      f_name: 'Nama', f_date: 'Tanggal', f_guests: 'Tamu', f_phone: 'Nomor WhatsApp', book_btn: 'Kirim permintaan', ok_wa: 'Konfirmasi lewat WhatsApp', wa_msg: 'Halo Balibu! Meja untuk {g} orang pada {d}. Nama: {n}. Nomor saya: {p}',
       err_name: 'Mohon isi nama Anda.', err_date: 'Pilih tanggal mulai 1 Desember.', err_phone: 'Tambahkan nomor WhatsApp agar kami bisa menghubungi Anda.',
-      ok_h: 'Terima kasih, {n}!', ok_p: 'Meja untuk {g} orang pada {d} — dicatat. Pemesanan online segera dibuka; sementara itu, kirim pesan WhatsApp dan kami simpan mejanya.',
+      ok_h: 'Terima kasih, {n}!', ok_p: 'Meja untuk {g} orang pada {d} — dicatat. Permintaan belum terkirim: ketuk tombol di bawah untuk konfirmasi lewat WhatsApp dan kami simpan mejanya.',
       live_on: 'Happy hour sedang berlangsung — sampai 19.00', live_in: 'Happy hour berikutnya dalam {h} j {m} m', live_pre: ' · mulai 1 Des',
       open_now: 'Kami sudah buka — mampir yuk!',
       ticker: ['Di-smash saat dipesan', 'Kopi Kintamani', 'Koktail rumah', 'Happy hour 17–19', 'Buka 1 Desember', 'Makan enak, hati senang'],
@@ -319,9 +319,9 @@
   D.getElementById('gallery').addEventListener('click', function (e) {
     var b = e.target.closest('.ph'); if (!b) return;
     lastFocus = b; var im = b.querySelector('img');
-    lbImg.src = b.getAttribute('data-full'); lbImg.alt = im.alt; lb.hidden = false; lbX.focus();
+    lbImg.src = b.getAttribute('data-full'); lbImg.alt = im.alt; lb.hidden = false; D.body.classList.add('lb-open'); lbX.focus();
   });
-  function closeLb() { lb.hidden = true; if (lastFocus) lastFocus.focus(); }
+  function closeLb() { lb.hidden = true; D.body.classList.remove('lb-open'); if (lastFocus) lastFocus.focus(); }
   lbX.addEventListener('click', closeLb);
   lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
   D.addEventListener('keydown', function (e) {
@@ -341,9 +341,12 @@
     err.hidden = true;
     var dt = new Date(d + 'T12:00:00');
     var ds = dt.toLocaleDateString(lang === 'id' ? 'id-ID' : 'en-GB', { day: 'numeric', month: 'long' });
-    ok.innerHTML = '<strong></strong><span></span>';
+    ok.innerHTML = '<strong></strong><span></span><br><a target="_blank" rel="noopener"></a>';
     ok.querySelector('strong').textContent = t('ok_h').replace('{n}', n.slice(0, 40));
     ok.querySelector('span').textContent = t('ok_p').replace('{g}', form.guests.value).replace('{d}', ds);
+    var wl = ok.querySelector('a');
+    wl.textContent = t('ok_wa');
+    wl.href = 'https://wa.me/628214248077?text=' + encodeURIComponent(t('wa_msg').replace('{g}', form.guests.value).replace('{d}', ds).replace('{n}', n.slice(0, 60)).replace('{p}', ph));
     ok.hidden = false;
   });
 

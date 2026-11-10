@@ -34,7 +34,7 @@
       g1: 'The table you want to be at.', g2: 'Shaken, not rushed.', g3: 'Late bite.', g4: 'Ten minutes from the rice fields.', g5: 'After five.', g6: 'Stacked tall.',
       find_h: 'Find us', wa: 'WhatsApp +62 821-4248-077', hours: 'Daily 08:00 – 23:00',
       book_h: 'Reserve a table', b_name: 'Name', b_contact: 'WhatsApp or email', b_date: 'Date', b_guests: 'Guests', b_btn: 'Hold my table',
-      b_err: 'Please add your name, a contact and a date.', b_ok: 'Thanks, {name}! Table for {n} on {d} noted. We will confirm on WhatsApp.',
+      b_err: 'Please add your name, a contact and a date.', b_err2: 'Enter a valid WhatsApp number or email.', b_err3: 'Pick a date from 1 December 2026.', b_ok: 'Thanks, {name}! Table for {n} on {d} noted. We will confirm on WhatsApp.',
       tick: ['Open 1 Dec', 'Happy hour 17 – 19', 'Smashed to order', 'Kintamani coffee', 'Smash combo 125K', 'Jl. Sugriwa No. 60', '@balibu.bar', 'Daily 08 – 23'],
       days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], dshort: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
     },
@@ -62,7 +62,7 @@
       g1: 'Meja yang paling seru.', g2: 'Dikocok, tanpa buru-buru.', g3: 'Camilan malam.', g4: 'Sepuluh menit dari sawah.', g5: 'Setelah jam lima.', g6: 'Ditumpuk tinggi.',
       find_h: 'Lokasi', wa: 'WhatsApp +62 821-4248-077', hours: 'Setiap hari 08.00 – 23.00',
       book_h: 'Pesan meja', b_name: 'Nama', b_contact: 'WhatsApp atau email', b_date: 'Tanggal', b_guests: 'Tamu', b_btn: 'Pesan mejaku',
-      b_err: 'Isi nama, kontak dan tanggal ya.', b_ok: 'Terima kasih, {name}! Meja untuk {n} pada {d} sudah dicatat. Kami konfirmasi via WhatsApp.',
+      b_err: 'Isi nama, kontak dan tanggal ya.', b_err2: 'Isi nomor WhatsApp atau email yang valid.', b_err3: 'Pilih tanggal mulai 1 Desember 2026.', b_ok: 'Terima kasih, {name}! Meja untuk {n} pada {d} sudah dicatat. Kami konfirmasi via WhatsApp.',
       tick: ['Buka 1 Des', 'Happy hour 17 – 19', 'Di-smash saat dipesan', 'Kopi Kintamani', 'Smash combo 125K', 'Jl. Sugriwa No. 60', '@balibu.bar', 'Setiap hari 08 – 23'],
       days: ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'], dshort: ['MIN', 'SEN', 'SEL', 'RAB', 'KAM', 'JUM', 'SAB']
     }
@@ -277,7 +277,11 @@
     e.preventDefault();
     var f = book.elements, msg = $('#bookMsg');
     var name = f.name.value.trim(), contact = f.contact.value.trim(), date = f.date.value;
-    if (!name || contact.length < 5 || !date) { msg.className = 'book-msg err'; msg.textContent = t('b_err'); return; }
+    function bad(k) { msg.className = 'book-msg err'; msg.textContent = t(k); }
+    if (!name || !contact || !date) { bad('b_err'); return; }
+    var digits = contact.replace(/[\s().-]/g, '');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(contact) && !/^\+?\d{8,15}$/.test(digits)) { bad('b_err2'); return; }
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || date < '2026-12-01') { bad('b_err3'); return; }
     var dd = date.split('-');
     msg.className = 'book-msg ok';
     msg.textContent = t('b_ok').replace('{name}', name.slice(0, 40)).replace('{n}', f.guests.value).replace('{d}', dd[2] + '.' + dd[1] + '.' + dd[0]);

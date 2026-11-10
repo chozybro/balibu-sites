@@ -21,7 +21,7 @@
     'happy.lbl': 'setiap hari · 17.00 – 19.00', 'happy.h': 'happy hour,<br>beli satu gratis satu',
     'happy.p': 'Beli satu gratis satu koktail rumah: Balibu Spritz, Arak Mojito, Passion Margarita.',
     'combo.lbl': 'paket hemat · sepanjang hari', 'combo.p': 'Balibu Smash, kentang goreng dan es teh lemon. 165K di menu, 125K sebagai paket.',
-    'combo.cta': 'pesan via whatsapp', 'combo.fries': 'kentang goreng', 'combo.tea': 'es teh lemon',
+    'combo.h': 'paket smash<br>125k', 'combo.cta': 'pesan via whatsapp', 'combo.fries': 'kentang goreng', 'combo.tea': 'es teh lemon',
     'find.lbl': 'lokasi', 'find.d1': 'setiap hari', 'find.d3': 'brunch akhir pekan', 'find.d3v': 'sab – min, sampai 12.00', 'find.d4': 'pembukaan', 'find.d4v': '1 desember 2026',
     'news.lbl': 'daftar pembukaan', 'news.h': 'jadilah yang pertama<br>masuk', 'news.label': 'alamat email', 'news.send': 'daftar →'
   };
@@ -93,6 +93,20 @@
     window.scrollTo({ top: hs.offsetTop + Math.max(0, x), behavior: 'smooth' });
   });
 
+  document.addEventListener('keydown', function (e) { if (e.key === 'Tab') document.documentElement.classList.add('kb'); });
+  document.addEventListener('pointerdown', function () { document.documentElement.classList.remove('kb'); });
+  var view = hs.querySelector('.hs__view');
+  function resetView() { if (view.scrollLeft) view.scrollLeft = 0; }
+  if (view) view.addEventListener('scroll', resetView);
+  track.addEventListener('focusin', function (e) {
+    if (!pinned || !document.documentElement.classList.contains('kb')) return; /* keyboard only: a mouse click must not move the pinned menu */
+    var p = e.target.closest('.panel'); if (!p) return;
+    resetView();
+    var x = Math.max(0, Math.min(dist, p.offsetLeft - window.innerWidth * 0.08));
+    window.scrollTo({ top: hs.offsetTop + x, behavior: 'instant' });
+    tick(); resetView();
+  });
+
   /* ---------- scroll loop: pin, drift words, index state ---------- */
   var drifts = Array.prototype.slice.call(document.querySelectorAll('.drift')), ticking = false;
   function tick() {
@@ -151,6 +165,7 @@
       var k = el.getAttribute('data-i18n'), v = l === 'id' && ID[k] != null ? ID[k] : EN[k];
       if (v != null) el.innerHTML = v;
     });
+    var tr = document.getElementById('trio'); if (tr) tr.setAttribute('aria-label', l === 'id' ? 'Isi paket Smash' : 'Smash Combo contents');
     renderMenu(); clocks();
   }
   document.querySelectorAll('[data-lang]').forEach(function (b) { b.addEventListener('click', function () { if (b.dataset.lang !== lang) { var y = window.scrollY; applyLang(b.dataset.lang); window.scrollTo(0, y); } }); });
@@ -160,9 +175,11 @@
   nf.addEventListener('submit', function (e) {
     e.preventDefault();
     var v = nf.elements.namedItem('email').value.trim(), msg = document.getElementById('newsMsg');
-    if (!/^[^\s@]{1,64}@[^\s@]+\.[^\s@]{2,}$/.test(v) || v.length > 120) { msg.textContent = T[lang].bad; return; }
-    msg.textContent = T[lang].ok; nf.querySelector('button').disabled = true; nf.elements.namedItem('email').disabled = true;
+    if (!/^[^\s@<>"'`]{1,64}@[a-z0-9.-]+\.[a-z]{2,}$/i.test(v) || v.length > 120) { msg.textContent = T[lang].bad; return; }
+    msg.textContent = T[lang].ok;
   });
+
+  nf.elements.namedItem('email').addEventListener('input', function () { document.getElementById('newsMsg').textContent = ''; });
 
   /* ---------- boot ---------- */
   applyLang(lang);

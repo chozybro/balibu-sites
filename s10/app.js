@@ -31,7 +31,8 @@
       book_h: 'save a table', book_p: "Opening week fills up fast. Leave a note and we'll keep a spot for you.",
       f_name: 'your name', f_date: 'date', f_guests: 'guests', f_go: 'keep my spot',
       ok: function (n, d, g) { return 'yay, ' + n + '! ' + g + ' on ' + d + ' — noted. This is a preview, so send it to us on WhatsApp to confirm.'; },
-      need: 'just your name first, please!'
+      need: 'just your name first, please!', bad_date: 'we open on 1 Dec, so pick a date from then on!',
+      sp_big: '2 for 1', a_open: 'Open menu', a_close: 'Close menu', a_lang: 'Switch language: English / Bahasa Indonesia', a_filter: 'Filter the menu', a_gal: 'Photo strip, scroll sideways'
     },
     id: {
       skip: 'Langsung ke menu', n_menu: 'menu', n_drinks: 'minuman', n_promo: 'promo', n_find: 'lokasi', n_book: 'pesan meja',
@@ -57,7 +58,8 @@
       book_h: 'pesan meja', book_p: 'Minggu pembukaan cepat penuh. Tinggalkan catatan, kami simpan tempat untukmu.',
       f_name: 'nama kamu', f_date: 'tanggal', f_guests: 'tamu', f_go: 'simpan tempatku',
       ok: function (n, d, g) { return 'asyik, ' + n + '! ' + g + ' orang, ' + d + ' — dicatat. Ini pratinjau, kirim ke WhatsApp kami untuk konfirmasi.'; },
-      need: 'isi nama dulu ya!'
+      need: 'isi nama dulu ya!', bad_date: 'kami buka 1 Des, jadi pilih tanggal setelahnya ya!',
+      sp_big: 'beli 1 gratis 1', a_open: 'Buka menu', a_close: 'Tutup menu', a_lang: 'Ganti bahasa: English / Bahasa Indonesia', a_filter: 'Saring menu', a_gal: 'Strip foto, geser ke samping'
     }
   };
   var NOTE_ID = { burgers: 'Patty sapi di-smash saat dipesan, brioche dari oven kami.', bites: 'Untuk berbagi. Atau tidak.', plates: 'Klasik Ubud dan beberapa favorit dari jalanan.', coffee: 'Arabika Kintamani, disangrai di Bali.', cocktails: 'Happy hour 17.00 – 19.00: beli satu gratis satu koktail rumah.' };
@@ -78,7 +80,7 @@
       (note ? '<p class="sec-note">' + esc(note) + '</p>' : '') + '<ul class="items">';
     s.items.forEach(function (it) {
       var tag = it.tag ? (lang === 'id' ? (TAG_ID[it.tag] || it.tag) : it.tag + '!') : '';
-      h += '<li class="it" tabindex="0" data-tag="' + esc(it.tag || '') + '"><span class="thumb"><img src="../shared/img/t/' + it.photo + '.jpg" alt="' + esc(it.name) + '" loading="lazy" decoding="async" width="58" height="58"></span>' +
+      h += '<li class="it" data-tag="' + esc(it.tag || '') + '"><span class="thumb"><img src="../shared/img/t/' + it.photo + '.jpg" alt="' + esc(it.name) + '" loading="lazy" decoding="async" width="58" height="58"></span>' +
         '<div><h4 class="it-n">' + esc(it.name) + (tag ? '<span class="tag">' + esc(tag) + '</span>' : '') + '</h4>' +
         '<p>' + esc(lang === 'id' ? it.ingredients_id : it.ingredients_en) + '</p></div>' +
         '<span class="price" aria-label="' + it.price + ' thousand rupiah">' + it.price + 'K</span></li>';
@@ -95,7 +97,8 @@
   function applyFilter(f) {
     filter = f; var n = 0;
     $$('.fchip').forEach(function (c) { var on = c.getAttribute('data-t') === f; c.classList.toggle('on', on); c.setAttribute('aria-pressed', on); });
-    $$('.it').forEach(function (li) { var ok = match(li.getAttribute('data-tag'), f); li.classList.toggle('dim', !ok); if (ok) n++; });
+    $$('#food .it').forEach(function (li) { var ok = match(li.getAttribute('data-tag'), f); li.classList.toggle('dim', !ok); li.classList.toggle('hid', !ok); if (ok) n++; });
+    $$('#food .sec').forEach(function (s) { s.classList.toggle('hid', !s.querySelector('.it:not(.hid)')); });
     $('.f-count').textContent = f === 'all' ? '' : T[lang].count(n);
   }
   $('.filters').addEventListener('click', function (e) { var b = e.target.closest('.fchip'); if (b) applyFilter(b.getAttribute('data-t')); });
@@ -105,6 +108,8 @@
     var d = T[lang];
     document.documentElement.lang = lang;
     $$('[data-i18n]').forEach(function (el) { var v = d[el.getAttribute('data-i18n')]; if (typeof v === 'string') el.textContent = v; });
+    $('.btn-lang').setAttribute('aria-label', d.a_lang); $('.filters').setAttribute('aria-label', d.a_filter); $('.gal-strip').setAttribute('aria-label', d.a_gal);
+    burger.setAttribute('aria-label', nl.classList.contains('open') ? d.a_close : d.a_open);
     $('.hero-h1').setAttribute('aria-label', d.h1a + ' ' + d.h1b);
     $('.btn-lang').innerHTML = '<span' + (lang === 'en' ? ' class="on"' : '') + '>EN</span> / <span' + (lang === 'id' ? ' class="on"' : '') + '>ID</span>';
     renderMenu(); tick();
@@ -149,7 +154,7 @@
   var waves = $$('.wave svg'), nav = $('.nav'), ticking = false;
   function onScroll() {
     ticking = false; var y = window.scrollY;
-    nav.classList.toggle('scrolled', y > 10);
+    nav.classList.toggle('scrolled', y > 10); setCur();
     if (reduce) return;
     waves.forEach(function (w, i) {
       var half = w.getBoundingClientRect().width / 2 || 1;
@@ -159,21 +164,20 @@
   }
   window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
 
-  /* current nav link */
-  if ('IntersectionObserver' in window) {
-    var links = $$('.nav-links a');
-    var cio = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { if (!e.isIntersecting) return; links.forEach(function (a) { a.classList.toggle('cur', a.getAttribute('href') === '#' + e.target.id); }); });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    ['menu', 'drinks', 'promo', 'visit'].forEach(function (id) { var el = document.getElementById(id); if (el) cio.observe(el); });
+  /* current nav link: recomputed on scroll, cleared when no section is active */
+  var links = $$('.nav-links a'), secs = ['menu', 'drinks', 'promo', 'visit'].map(function (id) { return document.getElementById(id); }).filter(Boolean);
+  function setCur() {
+    var line = window.innerHeight * 0.45, cur = '';
+    secs.forEach(function (el) { var r = el.getBoundingClientRect(); if (r.top <= line && r.bottom > line) cur = el.id; });
+    links.forEach(function (a) { a.classList.toggle('cur', cur !== '' && a.getAttribute('href') === '#' + cur); });
   }
 
   /* ---------- burger ---------- */
   var burger = $('.burger'), nl = $('#navlinks');
-  function closeNav() { nl.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); burger.setAttribute('aria-label', 'Open menu'); }
+  function closeNav() { nl.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); burger.setAttribute('aria-label', T[lang].a_open); }
   burger.addEventListener('click', function () {
     var open = !nl.classList.contains('open');
-    nl.classList.toggle('open', open); burger.setAttribute('aria-expanded', String(open)); burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    nl.classList.toggle('open', open); burger.setAttribute('aria-expanded', String(open)); burger.setAttribute('aria-label', open ? T[lang].a_close : T[lang].a_open);
   });
   nl.addEventListener('click', function (e) { if (e.target.closest('a')) closeNav(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeNav(); });
@@ -198,11 +202,13 @@
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var name = form.elements.name.value.trim().slice(0, 60);
+    var dv = form.elements.date.value, mn = form.elements.date.min, dbad = !!name && !!mn && (!dv || dv < mn);
     form.elements.name.classList.toggle('bad', !name);
-    $('span', ok).textContent = name ? T[lang].ok(name, fmtDate(form.elements.date.value), form.elements.guests.value) : T[lang].need;
+    form.elements.date.classList.toggle('bad', dbad);
+    $('span', ok).textContent = dbad ? T[lang].bad_date : name ? T[lang].ok(name, fmtDate(form.elements.date.value), form.elements.guests.value) : T[lang].need;
     ok.hidden = false;
     var h = $('.ok-heart', ok); h.classList.remove('drawn'); void h.getBoundingClientRect(); requestAnimationFrame(function () { h.classList.add('drawn'); });
-    if (!name) form.elements.name.focus();
+    if (!name) form.elements.name.focus(); else if (dbad) form.elements.date.focus();
   });
 
   /* ---------- reduced motion: freeze SMIL blob morph ---------- */
