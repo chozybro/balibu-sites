@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3056 607" fill="none" stroke="#D50F04" stroke-width="35" stroke-linejoin="miter" stroke-miterlimit="1.6">
+<defs><clipPath id="ca"><rect x="500" y="185" width="520" height="402.5"/></clipPath></defs>
+<path pathLength="1" d="M18.5 205.5H190A91 91 0 0 1 190 387H18.5M18.5 188V587M18.5 387H217A91 91 0 0 1 217 569.5H18.5"/>
+<g clip-path="url(#ca)"><path pathLength="1" d="M575 610L766 190L955 610M630 462H900"/></g>
+<path pathLength="1" d="M1241 188V569.5H1478"/>
+<path pathLength="1" d="M1752 189V587"/>
+<path pathLength="1" d="M2057 500V230C2057 110 2130 18.5 2228 18.5C2330 18.5 2400 100 2400 190C2400 250 2360 290 2305 318"/>
+<path pathLength="1" d="M2040 588H2430A127 148 0 0 0 2557 440A137 145 0 0 0 2420 295H2310"/>
+<path pathLength="1" d="M2770 189V442A133.5 133.5 0 0 0 3037 442V189"/>
+</svg>
