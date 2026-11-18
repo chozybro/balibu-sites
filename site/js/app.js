@@ -174,7 +174,7 @@
 
   /* ---------- dish window ---------- */
   const dlg = $('#dish'), sheet = $('#sheet'), scrollEl = $('#d-scroll'), imgEl = $('#d-img');
-  const el = { no: $('#d-no'), eb: $('#d-eyebrow'), name: $('#d-name'), price: $('#d-price b'), sub: $('#d-sub'), desc: $('#d-desc'), tags: $('#d-tags'), prev: $('#d-prev'), next: $('#d-next'), nextN: $('#d-next-n') };
+  const el = { eb: $('#d-eyebrow'), name: $('#d-name'), price: $('#d-price b'), sub: $('#d-sub'), desc: $('#d-desc'), tags: $('#d-tags'), prev: $('#d-prev'), next: $('#d-next'), nextN: $('#d-next-n') };
   let cur = null, pushed = false, fromPop = false, closing = false;
   const rowsOf = b => $$('[data-dish]', b.closest('.dishes'));
   const cloneKids = (src, dst) => { dst.replaceChildren(...(src ? Array.from(src.childNodes, n => n.cloneNode(true)) : [])); dst.hidden = !src || !src.childNodes.length; };
@@ -189,9 +189,8 @@
     const hi = new Image(); hi.src = hiSrc(slug);
     hi.decode().then(() => { if (cur === btn) imgEl.src = hiSrc(slug); }).catch(() => { if (cur === btn) imgEl.src = hiSrc(slug); });
     setAlt(btn);
-    el.no.textContent = btn.dataset.no;
     el.eb.replaceChildren();
-    ['en', 'id'].forEach(l => { const s = D.createElement('span'); s.className = l; if (l === 'id') s.lang = 'id'; s.textContent = sec.dataset[l] + ' · No. ' + btn.dataset.no; el.eb.append(s); });
+    ['en', 'id'].forEach(l => { const s = D.createElement('span'); s.className = l; if (l === 'id') s.lang = 'id'; s.textContent = sec.dataset[l]; el.eb.append(s); });
     cloneKids($('.nm', btn), el.name);
     cloneKids($('.sub', btn), el.sub);
     cloneKids($('.ds', btn), el.desc);
